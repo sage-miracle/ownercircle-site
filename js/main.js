@@ -69,9 +69,6 @@
       const errorEl = ctaForm.querySelector('.form__error');
       const fields = ctaForm.querySelectorAll('input, textarea, button');
 
-      if (errorEl) errorEl.hidden = true;
-      fields.forEach(el => el.disabled = true);
-
       const data = new FormData(ctaForm);
       const payload = {
         name: data.get('name') || '',
@@ -79,6 +76,9 @@
         phone: data.get('phone') || '',
         concern: data.get('concern') || '',
       };
+
+      if (errorEl) errorEl.hidden = true;
+      fields.forEach(el => el.disabled = true);
 
       try {
         const res = await fetch('/api/submit', {
