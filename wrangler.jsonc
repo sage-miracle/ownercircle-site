@@ -1,0 +1,8 @@
+{
+  "name": "ownercircle-site",
+  "compatibility_date": "2026-07-19",
+  "assets": {
+    "directory": "./",
+    "not_found_handling": "404-page"
+  }
+}
