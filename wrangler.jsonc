@@ -1,8 +1,10 @@
 {
   "name": "ownercircle-site",
   "compatibility_date": "2026-07-19",
+  "main": "src/worker.js",
   "assets": {
     "directory": "./",
+    "binding": "ASSETS",
     "not_found_handling": "404-page"
   }
 }

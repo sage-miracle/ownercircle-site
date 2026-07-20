@@ -424,6 +424,7 @@ button{ font-family:inherit; cursor:pointer; }
 .form button{ margin-top:8px; }
 .form__note{ text-align:center; color:var(--ink-dim); font-size:12.5px; margin-top:12px; }
 .form__success{ text-align:center; color:var(--gold-2); font-size:14.5px; margin-top:16px; }
+.form__error{ text-align:center; color:#d98a72; font-size:14.5px; margin-top:16px; }
 @media (max-width:600px){ .form__row{ flex-direction:column; gap:18px; } }
 
 /* =========================================================

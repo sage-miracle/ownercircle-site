@@ -39,7 +39,7 @@
     revealEls.forEach(el => el.classList.add('is-visible'));
   }
 
-  /* ---- Forms: client-side only (no backend wired up) ---- */
+  /* ---- Recruit form: client-side only (no backend wired up) ---- */
   const handleForm = (form) => {
     if (!form) return;
     form.addEventListener('submit', (e) => {
@@ -53,7 +53,47 @@
       if (success) success.hidden = false;
     });
   };
-  handleForm(document.getElementById('ctaForm'));
   handleForm(document.getElementById('recruitForm'));
+
+  /* ---- CTA form: submits to /api/submit (Telegram + email) ---- */
+  const ctaForm = document.getElementById('ctaForm');
+  if (ctaForm) {
+    ctaForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!ctaForm.checkValidity()) {
+        ctaForm.reportValidity();
+        return;
+      }
+
+      const successEl = ctaForm.querySelector('.form__success');
+      const errorEl = ctaForm.querySelector('.form__error');
+      const fields = ctaForm.querySelectorAll('input, textarea, button');
+
+      if (errorEl) errorEl.hidden = true;
+      fields.forEach(el => el.disabled = true);
+
+      const data = new FormData(ctaForm);
+      const payload = {
+        name: data.get('name') || '',
+        company: data.get('company') || '',
+        phone: data.get('phone') || '',
+        concern: data.get('concern') || '',
+      };
+
+      try {
+        const res = await fetch('/api/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const result = await res.json().catch(() => ({ ok: false }));
+        if (!res.ok || !result.ok) throw new Error(result.message || 'submit failed');
+        if (successEl) successEl.hidden = false;
+      } catch (err) {
+        fields.forEach(el => el.disabled = false);
+        if (errorEl) errorEl.hidden = false;
+      }
+    });
+  }
 
 })();
