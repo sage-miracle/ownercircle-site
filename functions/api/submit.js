@@ -1,16 +1,33 @@
 const FORMSPREE_URL = 'https://formspree.io/f/mzdngggv';
 
-function jsonResponse(ok, message, status = 200) {
+function corsHeaders(origin) {
+  return {
+    'Access-Control-Allow-Origin': origin || '*',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Vary': 'Origin',
+  };
+}
+
+function jsonResponse(ok, message, status = 200, origin) {
   return new Response(JSON.stringify({ ok, message }), {
     status,
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      ...corsHeaders(origin),
+    },
   });
+}
+
+export function handleOptions(request) {
+  const origin = request.headers.get('Origin');
+  return new Response(null, { status: 204, headers: corsHeaders(origin) });
 }
 
 async function sendTelegram(env, { name, company, phone, concern }) {
   const token = env.TELEGRAM_BOT_TOKEN;
   const chatId = env.TELEGRAM_CHAT_ID;
-  if (!token || !chatId) throw new Error('Telegram not configured');
+  if (!token || !chatId) throw new Error('Telegram not configured (missing secret)');
 
   const text = [
     '📩 오너서클 — 블랙 브리핑 신청',
@@ -54,15 +71,19 @@ async function sendFormspree({ name, company, phone, concern }, siteUrl) {
 }
 
 export async function handleSubmit(request, env) {
+  const origin = request.headers.get('Origin');
+  console.log(`[submit] incoming request, origin=${origin}, ua=${request.headers.get('User-Agent')}`);
+
   if (request.method !== 'POST') {
-    return jsonResponse(false, 'Method not allowed', 405);
+    return jsonResponse(false, 'Method not allowed', 405, origin);
   }
 
   let data;
   try {
     data = await request.json();
-  } catch {
-    return jsonResponse(false, '잘못된 요청입니다.', 400);
+  } catch (err) {
+    console.error('[submit] JSON parse failed', err);
+    return jsonResponse(false, '잘못된 요청입니다.', 400, origin);
   }
 
   const name = String(data.name || '').trim();
@@ -71,7 +92,8 @@ export async function handleSubmit(request, env) {
   const concern = String(data.concern || '').trim();
 
   if (!name || !company || !phone) {
-    return jsonResponse(false, '필수 항목이 누락되었습니다.', 400);
+    console.warn('[submit] missing required field', { name: !!name, company: !!company, phone: !!phone });
+    return jsonResponse(false, '필수 항목이 누락되었습니다.', 400, origin);
   }
 
   const siteUrl = new URL(request.url).origin;
@@ -81,14 +103,17 @@ export async function handleSubmit(request, env) {
     sendFormspree(payload, siteUrl),
   ]);
 
+  const [telegramResult, formspreeResult] = results;
+  console.log(`[submit] telegram=${telegramResult.status} formspree=${formspreeResult.status}`);
+
   const failures = results.filter(r => r.status === 'rejected');
   if (failures.length === results.length) {
-    failures.forEach(f => console.error(f.reason));
-    return jsonResponse(false, '전송에 실패했습니다.', 502);
+    failures.forEach(f => console.error('[submit] both channels failed:', f.reason?.message || f.reason));
+    return jsonResponse(false, '전송에 실패했습니다.', 502, origin);
   }
   if (failures.length > 0) {
-    failures.forEach(f => console.error(f.reason));
+    failures.forEach(f => console.error('[submit] one channel failed:', f.reason?.message || f.reason));
   }
 
-  return jsonResponse(true, 'ok');
+  return jsonResponse(true, 'ok', 200, origin);
 }
