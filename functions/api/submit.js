@@ -31,10 +31,15 @@ async function sendTelegram(env, { name, company, phone, concern }) {
   }
 }
 
-async function sendFormspree({ name, company, phone, concern }) {
+async function sendFormspree({ name, company, phone, concern }, siteUrl) {
   const res = await fetch(FORMSPREE_URL, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Referer': siteUrl,
+      'Origin': siteUrl,
+    },
     body: JSON.stringify({
       name,
       company,
@@ -69,10 +74,11 @@ export async function handleSubmit(request, env) {
     return jsonResponse(false, '필수 항목이 누락되었습니다.', 400);
   }
 
+  const siteUrl = new URL(request.url).origin;
   const payload = { name, company, phone, concern };
   const results = await Promise.allSettled([
     sendTelegram(env, payload),
-    sendFormspree(payload),
+    sendFormspree(payload, siteUrl),
   ]);
 
   const failures = results.filter(r => r.status === 'rejected');
