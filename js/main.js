@@ -39,49 +39,27 @@
     revealEls.forEach(el => el.classList.add('is-visible'));
   }
 
-  /* ---- Recruit form: client-side only (no backend wired up) ---- */
-  const handleForm = (form) => {
+  /* ---- Shared: submit a form to a JSON API endpoint (Telegram + email) ---- */
+  const wireApiForm = (form, endpoint, buildPayload) => {
     if (!form) return;
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       if (!form.checkValidity()) {
         form.reportValidity();
         return;
       }
-      const success = form.querySelector('.form__success');
-      form.querySelectorAll('input, textarea, button').forEach(el => el.disabled = true);
-      if (success) success.hidden = false;
-    });
-  };
-  handleForm(document.getElementById('recruitForm'));
 
-  /* ---- CTA form: submits to /api/submit (Telegram + email) ---- */
-  const ctaForm = document.getElementById('ctaForm');
-  if (ctaForm) {
-    ctaForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      if (!ctaForm.checkValidity()) {
-        ctaForm.reportValidity();
-        return;
-      }
+      const successEl = form.querySelector('.form__success');
+      const errorEl = form.querySelector('.form__error');
+      const fields = form.querySelectorAll('input, textarea, button');
 
-      const successEl = ctaForm.querySelector('.form__success');
-      const errorEl = ctaForm.querySelector('.form__error');
-      const fields = ctaForm.querySelectorAll('input, textarea, button');
-
-      const data = new FormData(ctaForm);
-      const payload = {
-        name: data.get('name') || '',
-        company: data.get('company') || '',
-        phone: data.get('phone') || '',
-        concern: data.get('concern') || '',
-      };
+      const payload = buildPayload(new FormData(form));
 
       if (errorEl) errorEl.hidden = true;
       fields.forEach(el => el.disabled = true);
 
       try {
-        const res = await fetch('/api/submit', {
+        const res = await fetch(endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
@@ -94,6 +72,21 @@
         if (errorEl) errorEl.hidden = false;
       }
     });
-  }
+  };
+
+  wireApiForm(document.getElementById('ctaForm'), '/api/submit', (data) => ({
+    name: data.get('name') || '',
+    company: data.get('company') || '',
+    phone: data.get('phone') || '',
+    concern: data.get('concern') || '',
+  }));
+
+  wireApiForm(document.getElementById('recruitForm'), '/api/apply', (data) => ({
+    name: data.get('name') || '',
+    phone: data.get('phone') || '',
+    position: data.get('position') || '',
+    exp: data.getAll('exp'),
+    intro: data.get('intro') || '',
+  }));
 
 })();

@@ -1,4 +1,5 @@
-import { handleSubmit, handleOptions } from '../functions/api/submit.js';
+import { handleSubmit, handleOptions as handleSubmitOptions } from '../functions/api/submit.js';
+import { handleApply, handleOptions as handleApplyOptions } from '../functions/api/apply.js';
 
 export default {
   async fetch(request, env) {
@@ -6,9 +7,16 @@ export default {
 
     if (url.pathname === '/api/submit') {
       if (request.method === 'OPTIONS') {
-        return handleOptions(request);
+        return handleSubmitOptions(request);
       }
       return handleSubmit(request, env);
+    }
+
+    if (url.pathname === '/api/apply') {
+      if (request.method === 'OPTIONS') {
+        return handleApplyOptions(request);
+      }
+      return handleApply(request, env);
     }
 
     return env.ASSETS.fetch(request);
