@@ -1,5 +1,5 @@
 /* =========================================================
-   OWNERCIRCLE — Owner Advisory Firm
+   OWNERCIRCLE , Owner Advisory Firm
    Design tokens
    ========================================================= */
 :root{
@@ -80,7 +80,7 @@ button{ font-family:inherit; cursor:pointer; }
 .section--recruit{ background:linear-gradient(180deg, transparent, var(--bg-alt) 8%, var(--bg-alt) 92%, transparent); }
 
 /* =========================================================
-   Ring mark — recurring signature motif (echoes the C-monogram)
+   Ring mark , recurring signature motif (echoes the C-monogram)
    ========================================================= */
 /* =========================================================
    Type helpers
@@ -106,7 +106,7 @@ button{ font-family:inherit; cursor:pointer; }
 .prose p:last-child{ margin-bottom:0; }
 .prose--lg{ font-size:clamp(16px,2vw,19px); line-height:1.85; color:var(--ink-soft); margin-bottom:44px; }
 .prose--lg strong{ color:var(--ink); font-weight:500; }
-.prose.centered{ text-align:center; }
+.prose.centered{ text-align:left; max-width:640px; margin-left:auto; margin-right:auto; }
 .centered{ text-align:center; }
 
 .prose__triplet{ display:flex; flex-direction:column; gap:.4em; padding-left:1.1em; border-left:1px solid var(--gold-line); margin-top:1.6em; }
@@ -118,9 +118,10 @@ button{ font-family:inherit; cursor:pointer; }
 .statement--xl{ font-size:clamp(24px,4vw,38px); margin:56px 0; }
 .statement--muted{ font-size:clamp(14px,1.6vw,16px); color:var(--ink-dim); line-height:1.8; }
 .statement strong{ font-weight:500; }
+@media (max-width:640px){ .statement{ text-align:left; } }
 
 .footnote{ margin-top:52px; font-size:13.5px; color:var(--ink-dim); line-height:1.9; border-top:1px solid var(--gold-line-soft); padding-top:28px; }
-.footnote.centered{ text-align:center; }
+.footnote.centered{ text-align:left; max-width:640px; margin-left:auto; margin-right:auto; }
 
 .br-desktop{ display:inline; }
 @media (max-width:640px){ .br-desktop{ display:none; } }
@@ -160,7 +161,7 @@ button{ font-family:inherit; cursor:pointer; }
 .nav__inner{ max-width:var(--container); margin:0 auto; padding:0 28px; display:flex; align-items:center; gap:20px; }
 .nav__brand{ display:flex; align-items:center; gap:10px; margin-right:auto; }
 .nav__brand-text{ font-family:var(--en); font-size:16px; letter-spacing:.08em; color:var(--ink); display:flex; flex-direction:column; align-items:flex-start; gap:8px; line-height:1.1; }
-.nav__brand-text em{ font-style:normal; font-family:var(--sans); font-size:10.5px; letter-spacing:.16em; color:var(--ink-dim); margin-left:-1px; }
+.nav__brand-text em{ font-style:normal; font-family:var(--sans); font-size:10.5px; letter-spacing:.16em; color:var(--ink-dim); margin-left:11px; }
 
 .brand-wordmark{
   display:inline-block;
@@ -226,7 +227,7 @@ button{ font-family:inherit; cursor:pointer; }
   line-height:1.28; color:var(--ink); letter-spacing:-.01em; margin-bottom:32px;
 }
 .hero__headline em{ font-style:normal; color:var(--gold-2); }
-.hero__sub{ font-size:clamp(15px,2vw,18px); line-height:1.9; color:var(--ink-soft); max-width:620px; margin:0 auto 44px; }
+.hero__sub{ font-size:clamp(15px,2vw,18px); line-height:1.9; color:var(--ink-soft); max-width:620px; margin:0 auto 44px; text-align:left; }
 .hero__actions{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
 
 .hero__scroll{
@@ -313,7 +314,7 @@ button{ font-family:inherit; cursor:pointer; }
 .plan__price small{ font-size:14px; color:var(--ink-dim); font-family:var(--sans); }
 .plan ul{ display:flex; flex-direction:column; gap:13px; }
 .plan li{ font-size:14px; color:var(--ink-soft); padding-left:16px; position:relative; }
-.plan li::before{ content:'—'; position:absolute; left:0; color:var(--ink-dim); }
+.plan li::before{ content:''; position:absolute; left:0; top:8px; width:6px; height:1px; background:var(--ink-dim); }
 .plan__badge{
   position:absolute; top:-13px; left:50%; transform:translateX(-50%);
   background:var(--gold); color:#1a1002; font-size:11px; font-weight:700;
@@ -325,7 +326,7 @@ button{ font-family:inherit; cursor:pointer; }
   transform:scale(1.045); box-shadow:0 30px 70px -30px rgba(185,148,92,.35);
 }
 .plan--gold h3{ color:var(--gold-2); }
-.plan--gold li::before{ color:var(--gold); }
+.plan--gold li::before{ background:var(--gold); }
 
 .plan--black{
   background:linear-gradient(165deg, #1a1611, var(--panel) 65%);
@@ -365,7 +366,7 @@ button{ font-family:inherit; cursor:pointer; }
 @media (max-width:760px){
   .founder{ grid-template-columns:1fr; }
   .founder__mark{ max-width:180px; margin:0 auto; }
-  .founder .statement, .founder__title{ text-align:center; }
+  .founder__title{ text-align:center; }
 }
 
 /* =========================================================
@@ -382,7 +383,7 @@ button{ font-family:inherit; cursor:pointer; }
   content:'+'; font-family:var(--sans); font-size:22px; font-weight:300; color:var(--gold);
   flex:none; transition:transform .3s;
 }
-.faq__item[open] summary::after{ content:'—'; }
+.faq__item[open] summary::after{ content:'−'; }
 .faq__item p{ margin-top:18px; font-size:15px; line-height:1.85; color:var(--ink-soft); padding-right:40px; }
 
 /* =========================================================

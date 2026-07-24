@@ -30,7 +30,7 @@ async function sendTelegram(env, { name, company, phone, concern }) {
   if (!token || !chatId) throw new Error('Telegram not configured (missing secret)');
 
   const text = [
-    '📩 오너서클 — 블랙 브리핑 신청',
+    '📩 오너서클, 블랙 브리핑 신청',
     '',
     `성함: ${name}`,
     `회사명: ${company}`,
@@ -62,7 +62,7 @@ async function sendFormspree({ name, company, phone, concern }, siteUrl) {
       company,
       phone,
       concern,
-      _subject: '오너서클 — 블랙 브리핑 신청',
+      _subject: '오너서클, 블랙 브리핑 신청',
     }),
   });
   if (!res.ok) {
