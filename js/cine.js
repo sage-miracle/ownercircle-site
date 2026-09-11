@@ -145,27 +145,20 @@
     }
   }
 
-  /* ---- 인장: 오너 신청 서식이 열릴 때만 내려와 찍힌다 ---- */
+  /* ---- 인장: 신청서가 화면에 자리 잡았을 때 한 번만 내려와 찍고, 위로 사라진다 ---- */
   if (S && document.getElementById('paper') && document.getElementById('reply')) {
-    const D = isDesktop();
-    // 종이로 내려와 자리를 잡고(mix), 종이가 화면에 고정된 동안 눌렀다(press) 떼면 붉은 자국이 남는다.
-    gsap.to(S, { mix: 1, ease: 'power1.inOut', scrollTrigger: { trigger: '#reply', start: 'top 95%', end: 'top 2%', scrub: .6 } });
     const paper = document.getElementById('paper');
-    let stamped = false;
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: '#reply', start: 'top top', end: () => '+=' + Math.round(window.innerHeight * 0.9),
-        pin: true, pinSpacing: true, scrub: .5, anticipatePin: 1, invalidateOnRefresh: true,
-        onUpdate: st => {
-          const on = st.progress > .56;
-          if (on === stamped) return;
-          stamped = on; paper.classList.toggle('is-stamped', on);
-          if (on) gsap.fromTo(paper, { y: 0 }, { y: 5, duration: .07, yoyo: true, repeat: 1, ease: 'power1.inOut' });
-        }
-      }
-    });
-    tl.to(S, { press: 1, duration: .55, ease: 'power2.in' })
-      .to(S, { mix: 0, press: 0, nx: .35, ny: 1.8, s: .6, rx: -.9, ry: .6, rz: .1, duration: .45, ease: 'power2.in' }); // 찍은 뒤 위로 빠져나가 사라진다
+    let played = false;
+    const play = () => {
+      if (played) return; played = true;
+      gsap.timeline()
+        .to(S, { mix: 1, duration: .75, ease: 'power2.out' })
+        .to(S, { press: 1, duration: .28, ease: 'power3.in' })
+        .add(() => { paper.classList.add('is-stamped'); gsap.fromTo(paper, { y: 0 }, { y: 5, duration: .07, yoyo: true, repeat: 1, ease: 'power1.inOut' }); })
+        .to(S, { press: 0, duration: .35, ease: 'power2.out' }, '+=.4')
+        .to(S, { mix: 0, nx: .35, ny: 1.9, s: .6, duration: .6, ease: 'power2.in' }, '-=.1');
+    };
+    ScrollTrigger.create({ trigger: '#reply', start: 'top 25%', once: true, onEnter: play });
   }
 
   /* 폰트 로딩 후 위치 재계산 */
