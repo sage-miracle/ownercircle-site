@@ -707,3 +707,6 @@ h1,h2,h3{ font-family:var(--serif); font-weight:400; color:var(--ink); }
 /* 모바일 메뉴 버튼: 링크 색 규칙에 덮이지 않게 */
 .nav .nav__mobile a.btn{ color:var(--bg); background:var(--ink); border-color:var(--ink); justify-content:center; }
 .nav .nav__mobile a.btn:hover{ background:var(--lamp); border-color:var(--lamp); }
+
+/* 명패: 내용 세로 가운데 */
+.plate{ justify-content:center; gap:14px; }
