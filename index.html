@@ -4,16 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>오너서클 | 오너자문펌</title>
-<meta name="description" content="오너들의 모임에서 오가는 조언에는 각자의 사업과 시선이 섞입니다. 오너서클의 자문에는 오직 대표님의 회사만 있습니다. 상장사 이사회를 지나온 오너자문사가 결정 이전부터 매달 곁에 있는 오너자문펌입니다.">
+<meta name="description" content="오너서클은 오로지 대표의 입장에서 고민하고 상의하는 오너자문펌입니다. 상장사 이사회를 지나온 오너자문사가 결정 이전부터 매달 곁에 있습니다.">
 <meta property="og:title" content="오너서클 | 오너자문펌">
-<meta property="og:description" content="대표의 외로움과 결정의 무게는, 그 곁에서 같은 무게를 짊어져 본 사람만 압니다. Korea's Owner Advisory Firm">
+<meta property="og:description" content="오너서클은 오로지 대표의 입장에서 고민하고 상의하는 오너자문펌입니다.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%230b0a08'/%3E%3Ccircle cx='50' cy='50' r='32' fill='none' stroke='%23b9945c' stroke-width='4' stroke-dasharray='176 26'/%3E%3Ccircle cx='50' cy='50' r='7' fill='%23b9945c'/%3E%3C/svg%3E">
+<meta property="og:url" content="https://ownercircle.kr/">
+<meta property="og:image" content="https://ownercircle.kr/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230b0a09'/%3E%3Crect x='28' y='28' width='44' height='44' rx='6' fill='none' stroke='%23c93b2c' stroke-width='7'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/cine.css?v=202609120535">
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
@@ -25,405 +31,365 @@
 </defs>
 </svg>
 
+<canvas id="scene" aria-hidden="true"></canvas>
+<div class="lamp" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
 
-<a class="skip-link" href="#main">본문으로 건너뛰기</a>
+<a class="skip-link" href="#solitude">본문으로 건너뛰기</a>
 
-<header class="nav" id="siteNav">
-  <div class="nav__inner">
-    <a href="#hero" class="nav__brand">
-<span class="nav__brand-text"><svg class="brand-wordmark" role="img" aria-label="OWNERCIRCLE" viewBox="0 0 2928 379"><use href="#logo-wordmark-path"/></svg><em>오너서클 오너자문펌</em></span>
-    </a>
-    <nav class="nav__links" aria-label="주요 메뉴">
-      <a href="#definition">오너자문이란</a>
-      <a href="#services">동행 영역</a>
-      <a href="#membership">멤버십 패키지</a>
-      <a href="#founder">파트너 소개</a>
-      <a href="#faq">FAQ</a>
-      <a href="recruit.html">오너자문사 합류</a>
-    </nav>
-    <a href="#cta" class="btn btn--gold btn--sm nav__cta">파트너십 문의</a>
-    <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navMobile" aria-label="메뉴 열기">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <div class="nav__mobile" id="navMobile">
-    <a href="#definition">오너자문이란</a>
-    <a href="#services">동행 영역</a>
-    <a href="#briefing">사전 브리핑</a>
-    <a href="#membership">멤버십 패키지</a>
-    <a href="#founder">파트너 소개</a>
+<header class="nav" id="nav">
+  <a href="#open" class="nav__brand" aria-label="오너서클 홈">
+    <svg class="wordmark" role="img" aria-label="OWNERCIRCLE" viewBox="0 0 2928 379"><use href="#logo-wordmark-path"/></svg>
+    <span>오너자문펌</span>
+  </a>
+  <nav class="nav__links" aria-label="주요 메뉴">
+    <a href="#advisory">오너자문이란</a>
+    <a href="#ways">동행 방식</a>
+    <a href="#briefing">블랙 브리핑</a>
+    <a href="#membership">멤버십</a>
+    <a href="#founder">대표 소개</a>
     <a href="#faq">FAQ</a>
-    <a href="recruit.html">오너자문사 합류</a>
-    <a href="#cta" class="btn btn--gold btn--sm">파트너십 문의</a>
+    <a href="recruit.html">합류 안내</a>
+  </nav>
+  <a href="#reply" class="nav__cta">브리핑 신청</a>
+  <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navMobile" aria-label="메뉴 열기"><span></span><span></span></button>
+  <div class="nav__mobile" id="navMobile">
+    <a href="#advisory">오너자문이란</a>
+    <a href="#ways">동행 방식</a>
+    <a href="#briefing">블랙 브리핑</a>
+    <a href="#membership">멤버십</a>
+    <a href="#founder">대표 소개</a>
+    <a href="#faq">FAQ</a>
+    <a href="recruit.html">합류 안내</a>
+    <a href="#reply" class="btn">브리핑 신청</a>
   </div>
 </header>
 
-<main id="main">
+<main>
 
-  <!-- ============ SECTION 1 · HERO ============ -->
-  <section class="hero" id="hero">
-    <div class="hero__ring" aria-hidden="true">
-      <svg viewBox="0 0 640 640">
-        <circle cx="320" cy="320" r="300" class="hero__ring-arc"/>
-        <circle cx="320" cy="20" r="7" class="hero__ring-dot"/>
-      </svg>
-    </div>
-    <div class="hero__inner">
-      <p class="eyebrow eyebrow--center reveal">OWNER ADVISORY&nbsp;·&nbsp;오너자문펌</p>
-      <h1 class="hero__headline reveal">
-        대표의 고독한 결정,<br>
-        누구와 <span class="gold-text">동행</span>하십니까.
-      </h1>
-      <p class="hero__sub reveal">
-        직원에게도, 가족에게도 말할 수 없는 결정이 있습니다.<br>
-        상장사 이사회에서 같은 무게를 짊어져 본 사람이, 오직 대표님의 자리에서 그 결정을 함께합니다.
-      </p>
-      <div class="hero__actions reveal">
-        <a href="#briefing" class="btn btn--gold">블랙 브리핑 신청</a>
-        <a href="#definition" class="btn btn--ghost">오너자문이란?</a>
+  <!-- ============ 0 · 오프닝 ============ -->
+  <section class="ch ch--open" id="open">
+    <div class="desk" aria-hidden="true">
+      <div class="contract" id="contract">
+        <div class="contract__paper" id="contractPaper">
+          <p class="contract__title">대 표 이 사 결 재</p>
+          <p class="contract__meta">주식회사 ○○○ · 결재 안건 6건 · ○○○○년 ○월 ○일</p>
+          <ol class="contract__clauses">
+            <li><b>안건 1 · 투자 유치 조건 수용 여부</b> 투자자가 제시한 이사 지명권·우선매수권·동반매도청구권 조항을 받아들일 것인가.</li>
+            <li><b>안건 2 · 기업가치 제고(밸류업) 계획</b> 향후 3개년 주주환원 방향, IR 원칙, 시장과의 커뮤니케이션 기조.</li>
+            <li><b>안건 3 · 핵심 임원 영입과 보상</b> 신사업 총괄 임원 영입 조건, 스톡옵션 부여 규모, 기존 임원과의 형평.</li>
+            <li><b>안건 4 · 승계 로드맵</b> 2세 경영 참여 시점, 지분 이전 순서, 이사회 구성 변경안.</li>
+            <li><b>안건 5 · 동업자 지분 정리</b> 공동창업자 보유 지분의 매입 조건과 시기, 퇴임 이후의 역할.</li>
+            <li><b>안건 6 · 대표의 대외 활동</b> 언론 인터뷰 응답 여부, 협회 임원직 수락, 대표 개인 SNS 운영 원칙.</li>
+          </ol>
+          <div class="contract__sign"><span>대표이사</span><span class="line"></span><span>(인)</span></div>
+        </div>
       </div>
     </div>
-    <a href="#problem" class="hero__scroll" aria-label="아래로 스크롤">
-      <span></span>
-    </a>
+    <p class="open__line open__line--1">새벽 두 시.</p>
+    <p class="open__line open__line--2">결재 서류를 앞에 두고,<br>상의할 사람이 있습니까.</p>
+    <div class="wrap open__hero">
+      <p class="eyebrow">OWNER ADVISORY · 오너자문펌</p>
+      <h1 class="h-xl h-xl--long">오너서클은 오로지<br><em class="acc">대표의 입장</em>에서 고민하고<br>상의하는 오너자문펌입니다.</h1>
+      <p class="lead">직원에게도, 가족에게도 말할 수 없는 결정이 있습니다.<br>상장사 이사회에서 같은 무게를 짊어져 본 사람이, 오직 대표님의 자리에서 그 결정을 함께합니다.</p>
+      <div class="actions">
+        <a href="#reply" class="btn">블랙 브리핑 신청</a>
+        <a href="#advisory" class="btn btn--ghost">오너자문이란</a>
+      </div>
+    </div>
+    <p class="scroll-hint" aria-hidden="true"><span></span>SCROLL</p>
   </section>
 
-  <!-- ============ SECTION 2 · 문제 제기 ============ -->
-  <section class="section" id="problem">
-    <div class="container container--narrow">
-      <p class="eyebrow reveal">THE OWNER'S SOLITUDE</p>
-      <h2 class="h2 reveal">회장님께는 비서실이 있습니다.<br>대표님께는 무엇이 있습니까.</h2>
-      <div class="prose prose--lg reveal">
-        <p>대기업 회장의 곁에는 비서실과 전략기획실이 있습니다.
-        그러나 대한민국 중소·중견기업 오너의 절대다수는
-        회사의 가장 중요한 결정을 <strong>혼자</strong> 내립니다.</p>
-        <p>투자를 받을 것인가. 이 계약에 서명할 것인가.
-        동업자와 어떻게 정리할 것인가. 회사를 언제, 어떻게 넘길 것인가.</p>
-        <p class="prose__triplet">
-          <span>변호사는 물어본 것에만 답합니다.</span>
-          <span>회계사는 숫자만 봅니다.</span>
-          <span>컨설팅사는 보고서를 놓고 떠납니다.</span>
-          <span>그렇다고 회사 임원과 상의하기도 어렵습니다. 그 임원 역시 자신의 자리를 지켜야 하는 사람이기 때문입니다.</span>
-        </p>
+  <!-- ============ 1 · 오너의 자리 ============ -->
+  <section class="ch" id="solitude">
+    <div class="wrap">
+      <p class="eyebrow rv">THE OWNER'S SOLITUDE</p>
+      <h2 class="h-l rv">결정이 무거울수록,<br>물어볼 곳은 줄어듭니다.</h2>
+      <div class="cols rv">
+        <p>투자 유치, 기업가치, 핵심 임원, 동업자, 승계, 대표 개인의 브랜드. 회사에서 가장 중요한 결정일수록 대표는 <strong>혼자</strong> 결정합니다.</p>
+        <p>주변에 사람이 없어서가 아닙니다. <strong>각자의 자리에서 답하기 때문입니다.</strong></p>
       </div>
-      <p class="statement reveal"><strong>무엇을 물어야 할지 모르는 문제</strong>, 그것이 오너의 진짜 문제입니다.</p>
+      <ul class="plates rv-stagger">
+        <li class="plate" data-light><small>변호사</small><b>물어본 것에만 답합니다.</b></li>
+        <li class="plate" data-light><small>회계사</small><b>숫자만 봅니다.</b></li>
+        <li class="plate" data-light><small>컨설팅사</small><b>보고서를 놓고 떠납니다.</b></li>
+        <li class="plate" data-light><small>회사 임원</small><b>상의하기도 어렵습니다.<span>그 임원 역시 자신의 자리를 지켜야 하는 사람이기 때문입니다.</span></b></li>
+      </ul>
+      <div class="qblock rv">
+        <p class="statement"><strong>무엇을 물어야 할지조차 모를 만큼 얽힌 문제.</strong><br><span class="statement__sub">그때 필요한 건 답이 아니라, 질문을 함께 정리할 사람입니다.</span></p>
+      </div>
+      </div>
     </div>
   </section>
 
-  <!-- ============ SECTION 3 · 오너자문의 정의 ============ -->
-  <section class="section section--alt" id="definition">
-    <div class="container">
-      <p class="eyebrow reveal">CATEGORY DECLARATION</p>
-      <h2 class="h2 reveal">오너자문 <span class="serif-en">Owner Advisory</span></h2>
-      <div class="prose prose--lg reveal centered">
-        <p>일반 경영컨설팅이 시스템과 조직을 분석한다면,<br><strong>오너자문은 자문사의 '경험과 인맥'을 결합하여 오너의 결정을 도웁니다.</strong></p>
-        <p>오너서클의 자문사들은 그 자리에 앉아본 사람들입니다.<br>
-        상장사의 이사회에서, 경영권 분쟁의 한가운데서, 투자와 매각의 서명 직전에,
-        <strong>같은 무게의 결정을 내려본 사람만이, 같은 눈높이에서 결정을 함께할 수 있습니다.</strong></p>
+  <!-- ============ 2 · 오너자문이란 (가로 시트) ============ -->
+  <section class="ch" id="advisory">
+    <div class="pin">
+      <div class="wrap">
+        <p class="eyebrow rv">OWNER ADVISORY</p>
+        <h2 class="h-l rv">오너자문 <em class="en">Owner Advisory</em></h2>
+        <div class="cols rv">
+          <p>일반 경영컨설팅이 시스템과 조직을 분석한다면, <strong>오너자문은 자문사의 '경험과 사람'을 더해 오너의 결정을 도웁니다.</strong></p>
+          <p>오너서클의 자문사들은 그 자리에 앉아본 사람들입니다. 상장사의 이사회에서, 경영권 분쟁의 한가운데서, 투자와 매각의 서명 직전에, <strong>같은 무게의 결정을 내려본 사람만이, 같은 눈높이에서 결정을 함께할 수 있습니다.</strong></p>
+        </div>
       </div>
-
-      <div class="compare reveal">
-        <div class="compare__card">
+      <div class="wrap"><div class="sheets">
+        <article class="sheet sheet--dark" data-light>
           <h3>경영컨설팅</h3>
           <dl>
             <div><dt>대상</dt><dd>회사와 조직</dd></div>
             <div><dt>산출물</dt><dd>분석과 전략 보고서</dd></div>
             <div><dt>함께하는 방식</dt><dd>프로젝트가 끝나면 떠납니다</dd></div>
           </dl>
-        </div>
-        <div class="compare__card">
+        </article>
+        <article class="sheet sheet--dark" data-light>
           <h3>법무·세무 자격사</h3>
           <dl>
             <div><dt>대상</dt><dd>개별 사안 (법·세금)</dd></div>
             <div><dt>산출물</dt><dd>전문 의견서</dd></div>
             <div><dt>함께하는 방식</dt><dd>질문을 받은 후 움직입니다</dd></div>
           </dl>
-        </div>
-        <div class="compare__card compare__card--gold">
-          <span class="compare__badge">OWNER CIRCLE</span>
+        </article>
+        <article class="sheet sheet--us pobj" data-light>
+          <span class="stamp-mark">OWNER CIRCLE</span>
           <h3>오너서클 자문사</h3>
           <dl>
             <div><dt>대상</dt><dd>오너, 그리고 오너의 결정</dd></div>
             <div><dt>산출물</dt><dd>함께 내린 결정과 연결된 사람</dd></div>
             <div><dt>함께하는 방식</dt><dd>결정 이전부터, 매달 곁에서</dd></div>
           </dl>
-        </div>
-      </div>
-      <p class="statement statement--xl reveal">오너서클의 성장 공식은 하나뿐입니다, <span class="gold-text">대표님의 이익에 정비례하는 것.</span><br>매달의 자문도, 큰 거래의 보수도, 내일의 재계약도, 전부 대표님의 성공에서만 나옵니다.</p>
-    </div>
-  </section>
-
-  <!-- ============ SECTION 4 · 6대 업무 ============ -->
-  <section class="section" id="services">
-    <div class="container">
-      <p class="eyebrow eyebrow--center reveal">CORE SOLUTIONS</p>
-      <h2 class="h2 centered reveal">오너자문사가 동행하는 방식</h2>
-      <div class="services reveal">
-        <article class="service"><span class="service__num">①</span>
-          <h3>의사결정 동행</h3>
-          <p>투자, 신사업, 인사처럼 혼자 내리기엔 무거운 결정 앞에서, 같은 결정을 내려본 자문사가 판단의 재료와 시나리오를 함께 정리합니다. 결정은 대표님이 하고, 그 과정은 혼자가 아니게 합니다.</p>
-        </article>
-        <article class="service"><span class="service__num">②</span>
-          <h3>서명 전 리스크 스크리닝</h3>
-          <p>도장은 찍고 나면 되돌릴 수 없습니다. 계약 조건 이면의 독소 조항과 분쟁 소지를 경영자의 눈으로 먼저 읽고, 법률 검토가 필요한 지점은 검증된 자격사에게 정확히 연결합니다.</p>
-        </article>
-        <article class="service"><span class="service__num">③</span>
-          <h3>이해관계·지배구조 조율</h3>
-          <p>주주 간 이견, 동업자 갈등, 재무적 투자자(FI)와의 대립. 모두가 각자의 이익을 말하는 국면에서, 오직 오너의 자리에서 협상 구도와 방어 전략을 설계합니다.</p>
-        </article>
-        <article class="service"><span class="service__num">④</span>
-          <h3>대외 브릿지</h3>
-          <p>필요한 사람을 소개하는 데서 끝나지 않습니다. 만남의 목적과 구조를 먼저 설계한 뒤, 자문사들이 경영 현장에서 쌓아온 기업·투자자·전문가 네트워크를 연결합니다.</p>
-        </article>
-        <article class="service"><span class="service__num">⑤</span>
-          <h3>오너 리스크 관리</h3>
-          <p>연대보증, 지분 구조, 경영권, 평판처럼 회사가 아니라 오너 개인에게 귀속되는 리스크는 평소에는 보이지 않다가 한 번에 옵니다. 문제가 되기 전에 정기적으로 점검하고 대비합니다.</p>
-        </article>
-        <article class="service"><span class="service__num">⑥</span>
-          <h3>중대 이벤트 사전 빌드업</h3>
-          <p>투자유치, M&amp;A, IPO는 시작하고 나서 준비하면 늦습니다. 이벤트가 오기 전 단계에서 지배구조와 재무의 준비 상태를 진단하고, 신사업(Pearl) 기반의 가치 제고 로드맵을 세웁니다.</p>
         </article>
       </div>
-
-      <p class="footnote reveal">
-        오너자문사는 법률사무·세무대리·투자중개 등 전문 영역은 직접 수행하지 않고, 경험으로 검증된 전문 자격사와의 협업으로 해결합니다.
-      </p>
-    </div>
-  </section>
-
-  <!-- ============ SECTION 5 · 브리핑 퍼널 ============ -->
-  <section class="section section--alt" id="briefing">
-    <div class="container container--narrow">
-      <p class="eyebrow eyebrow--center reveal">THE FIRST ENGAGEMENT</p>
-      <h2 class="h2 centered reveal">모든 동행은 한 번의 브리핑에서 시작됩니다</h2>
-      <p class="prose prose--lg centered reveal">저희는 첫 만남에 장기 계약을 권하지 않습니다.<br>2주간 대표님의 회사를 오너의 시각에서 검토한 뒤, 대표님께만 보고드립니다.</p>
-      <div class="diag-card reveal">
-        <div class="diag-card__head">
-          <p class="diag-card__eyebrow">오너십 리스크 & 가치 제고 리뷰</p>
-          <h3>BLACK BRIEFING</h3>
-          <p class="diag-card__sub">도장을 찍기 전 2주. 대표님이 이미 아는 것과, 아직 아무도 말해주지 않은 것, 그 차이를 정리해 대표님께만 말씀드립니다.</p>
-        </div>
-        <div class="diag-card__price">
-          <span class="diag-card__amount">300<small>만원</small></span>
-          <span class="diag-card__period">· 2주 리뷰 + 오너 단독 브리핑</span>
-        </div>
-        <ul class="diag-card__list">
-          <li>대주주 지분 및 지배구조 리스크 리뷰</li>
-          <li>주요 계약(기체결·서명 예정)의 경영적 리스크 검토</li>
-          <li>M&amp;A(인수·매도) 가능성 진단 및 밸류업(Value-up) 갭 분석</li>
-          <li>오너 개인 리스크(연대보증·지분·평판) 리뷰</li>
-        </ul>
-        <p class="diag-card__output">오너자문사의 오너 단독 대면 브리핑<br>브리핑 이후 2주간 후속 질문 대응 포함 (유선·메시지 등)</p>
-        <p class="diag-card__output">오너의 민감한 정보는 문서로 남기지 않는 것이 원칙입니다. 기록이 필요한 지속 관리는 멤버십에서 시작됩니다.</p>
-        <p class="diag-card__note">브리핑 후 30일 이내 오너서클 멤버십 전환 시, <strong>브리핑 보수 300만 원 전액을 첫 달 멤버십에서 공제합니다.</strong></p>
-        <a href="#cta" class="btn btn--gold btn--block">블랙 브리핑 신청</a>
       </div>
     </div>
   </section>
 
-  <!-- ============ SECTION 6 · 멤버십 ============ -->
-  <section class="section" id="membership">
-    <div class="container">
-      <p class="eyebrow eyebrow--center reveal">OWNER ADVISORY MEMBERSHIP</p>
-      <h2 class="h2 centered reveal">오너서클 멤버십</h2>
-      <p class="prose prose--lg centered reveal">저희는 노동 시간이나 보고서 분량을 팔지 않습니다.<br>새벽 두 시, 계약서를 다시 읽다가 전화할 수 있는 사람이 있습니까.<br><strong>대표님이 확보하시는 것은 시간이 아니라, 그 전화를 받는 사람입니다.</strong></p>
-      <div class="plans reveal">
-        <article class="plan">
+  <!-- ============ 3 · 동행하는 방식 (스텝) ============ -->
+  <section class="ch ch--pin" id="ways">
+    <div class="pin">
+      <div class="wrap ways">
+        <div class="ways__left">
+          <p class="eyebrow">HOW WE STAND BESIDE</p>
+          <h2 class="h-l">오너자문사가<br>동행하는 방식</h2>
+          <p class="ways__counter"><span id="waysNum">01</span><small>/ 06</small></p>
+        </div>
+        <div class="notepad" id="notepad">
+        <ol class="ways__list" id="waysList">
+          <li class="is-active">
+            <h3><span>01</span>의사결정 동행</h3>
+            <p>투자, 신사업, 인사처럼 혼자 내리기엔 무거운 결정 앞에서, 같은 결정을 내려본 자문사가 판단의 재료와 시나리오를 함께 정리합니다. 결정은 대표님이 하고, 그 과정은 혼자가 아니게 합니다.</p>
+          </li>
+          <li>
+            <h3><span>02</span>서명 전 리스크 검토</h3>
+            <p>도장은 찍고 나면 되돌릴 수 없습니다. 계약 조건 이면의 독소 조항과 분쟁 소지를 경영자의 눈으로 먼저 읽고, 법률 검토가 필요한 지점은 검증된 자격사에게 정확히 연결합니다.</p>
+          </li>
+          <li>
+            <h3><span>03</span>이해관계·지배구조 조율</h3>
+            <p>주주 간 이견, 동업자 갈등, 재무적 투자자(FI)와의 대립. 모두가 각자의 이익을 말하는 국면에서, 오직 오너의 자리에서 협상 구도와 방어 전략을 설계합니다.</p>
+          </li>
+          <li>
+            <h3><span>04</span>대외 연결</h3>
+            <p>필요한 사람을 소개하는 데서 끝나지 않습니다. 만남의 목적과 구조를 먼저 설계한 뒤, 자문사들이 경영 현장에서 쌓아온 기업·투자자·전문가 네트워크를 연결합니다.</p>
+          </li>
+          <li>
+            <h3><span>05</span>오너 리스크 관리</h3>
+            <p>연대보증, 지분 구조, 경영권, 평판과 대외 이미지처럼 회사가 아니라 오너 개인에게 귀속되는 리스크는 평소에는 보이지 않다가 한 번에 옵니다. 문제가 되기 전에 정기적으로 점검하고 대비합니다.</p>
+          </li>
+          <li>
+            <h3><span>06</span>중대 이벤트 사전 준비</h3>
+            <p>투자유치, M&amp;A, IPO, 상장사의 밸류업은 시작하고 나서 준비하면 늦습니다. 이벤트가 오기 전 단계에서 지배구조·재무·시장 커뮤니케이션의 준비 상태를 점검하고, 기업가치 제고 로드맵을 함께 세웁니다.</p>
+          </li>
+        </ol>
+        </div>
+      </div>
+    </div>
+    <div class="wrap"><p class="fn">오너자문사는 법률사무·세무대리·회계감사·투자중개 등 전문 영역은 직접 수행하지 않고, 경험으로 검증된 전문 자격사와의 협업으로 해결합니다.</p></div>
+  </section>
+
+  <!-- ============ 4 · 블랙 브리핑 ============ -->
+  <section class="ch" id="briefing">
+    <div class="wrap wrap--narrow">
+      <p class="eyebrow rv">THE FIRST ENGAGEMENT</p>
+      <h2 class="h-l rv">모든 동행은<br>한 번의 브리핑에서 시작됩니다</h2>
+      <div class="bb rv" data-light data-tilt>
+      <p class="bb__name">BLACK BRIEFING</p>
+      <p class="bb__open">오너자문사와 대표님의 첫 자리입니다.</p>
+      <div class="bb__body">
+        <p>대표님의 의중과 회사의 실제 상황을 먼저 듣습니다. 그 위에서 목적지로 가기 위한 기본 방향과 단기·장기 플랜을 브리핑드립니다. <strong>대표님의 생각을 정리하고, 다른 시각의 판단을 들어보시는 시간입니다.</strong></p>
+      </div>
+      <p class="bb__fee">블랙 브리핑 비용은 300만원입니다. 최소 3개월부터 시작하는 LITE 멤버십을, 브리핑을 포함해 한 달 비용으로 먼저 경험해 보시는 자리입니다.</p>
+      <p class="bb__cta"><a href="#reply" class="btn">블랙 브리핑 신청</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5 · 멤버십 ============ -->
+  <section class="ch" id="membership">
+    <div class="wrap">
+      <p class="eyebrow rv">OWNER ADVISORY MEMBERSHIP</p>
+      <h2 class="h-l rv">오너서클 멤버십</h2>
+      <p class="lead rv">대표님의 회사와 사정을 이미 알고 있는 사람이 늘 곁에 있는 것, 그것이 멤버십입니다. 어느 등급이든 그 사람의 마음은 같습니다. <strong>다만 얼마나 가까이, 얼마나 자주 곁에 있는가가 다를 뿐입니다.</strong></p>
+
+      <div class="plans">
+        <article class="plan plan--lite" data-tilt data-light>
           <h3>LITE</h3>
           <p class="plan__desc">월 1회, 회사의 주요 결정을 함께 점검합니다.</p>
           <p class="plan__price">300<small>만원 / 월</small></p>
           <ul>
             <li>정기 대면 미팅 월 1회</li>
-            <li>주요 계약·안건 사전검토 월 2건</li>
-            <li>수시 문의 대응 (48시간 내 회신)</li>
+            <li>주요 계약·안건 사전검토</li>
+            <li>수시 문의 대응</li>
           </ul>
         </article>
-
-        <article class="plan plan--gold">
+        <article class="plan plan--std" data-tilt data-light>
           <span class="plan__badge">기본 제안 플랜</span>
           <h3>STANDARD</h3>
           <p class="plan__desc">격주로 마주 앉는 오너의 상시 파트너.</p>
           <p class="plan__price">500<small>만원 / 월</small></p>
           <ul>
-            <li>정기 대면 미팅 월 2회</li>
-            <li>주요 거래·계약 사전검토 월 5건</li>
-            <li>오너 전담 라인 (24시간 내 회신)</li>
-            <li>주주·투자자·동업자 미팅 배석 (월 1회)</li>
+            <li>대표 요청 시 대면 미팅 월 2회 이상</li>
+            <li>주요 거래·계약 사전검토</li>
+            <li>오너 전담 라인</li>
+            <li>주주·투자자·동업자 미팅 배석</li>
             <li>필요 전문가·기업 연결 및 협업 조율</li>
           </ul>
         </article>
-
-        <article class="plan plan--black">
-          <span class="plan__badge plan__badge--outline">초빙·심사 후 계약</span>
-          <h3>BLACK MEMBERSHIP</h3>
+        <article class="plan plan--blk" data-tilt data-light>
+          <span class="plan__badge">초빙·심사 후 계약</span>
+          <h3>BLACK</h3>
           <p class="plan__desc">조직도에는 없지만, 오너가 믿고 터놓는 단 한 사람.</p>
           <p class="plan__price">1,000<small>만원 부터 / 월</small></p>
           <ul>
             <li>주 1회 이상 정기 미팅, 필요시 수시 동행</li>
             <li>의사결정·계약 사전검토 제한 없음</li>
-            <li>상시 직통 라인 (긴급 사안 야간·주말 포함)</li>
+            <li>최우선 회신</li>
             <li>중대 협상 배석 및 협상 시나리오 설계</li>
             <li>투자유치·M&amp;A·IPO 준비 총괄 조율</li>
             <li>대표 오너자문사 단독 전담</li>
           </ul>
         </article>
       </div>
-
-      <p class="footnote centered reveal">
-        모든 멤버십 비용은 부가세 별도이며, 최소 계약 기간은 3개월입니다.
-      </p>
+      <p class="fn rv">모든 멤버십 비용은 부가세 별도이며, 최소 계약 기간은 3개월입니다.</p>
     </div>
   </section>
 
-  <!-- ============ SECTION 7 · 대표 소개 ============ -->
-  <section class="section section--alt" id="founder">
-    <div class="container">
-      <div class="founder reveal">
-        <div class="founder__mark">
-          <img src="assets/founder-seal.png" alt="원경민 인장 (元庚珉印)" loading="lazy">
-        </div>
-        <div class="founder__content">
-          <p class="eyebrow">오너자문사라는 이름을 처음 붙인 사람</p>
-          <h3 class="founder__name">원경민</h3>
-          <p class="founder__title">대표 오너자문사 · Managing Partner</p>
-
-          <div class="prose">
-            <p>21년간, 기업의 가장 중요한 결정들 곁에 있었습니다.
-            코스닥 상장사의 사내이사, 사외이사, 전무이사로 이사회에 앉아 경영권 분쟁을 안정시켰고,
-            기관 투자유치와 IPO 요건을 정비했으며, 대형 거래의 계약서를 서명 전에 검토해 왔습니다.</p>
-            <p>성사된 거래와 무산된 거래, 지켜낸 회사와 무너진 회사를 그 자리에서 함께 겪으며 얻은 결론은 하나였습니다.</p>
-          </div>
-
-          <p class="statement">&ldquo;기업의 명운을 가르는 것은 화려한 경영 전략이 아니라,<br><span class="gold-text">가장 외로운 순간 내려지는 오너의 도장 하나다.</span>&rdquo;</p>
-
-          <div class="prose">
-            <p>그 도장의 무게를, 저는 21년간 바로 옆에서 함께 짊어져 왔습니다.
-            그 자리에 이름이 없다는 것을 알았을 때, 저는 이 직업에 '오너자문사'라는 이름을 붙였고,
-            같은 무게를 견뎌본 사람들과 함께 오너서클을 시작합니다.</p>
-          </div>
-
-          <ul class="founder__career">
-            <li>現 오너서클 대표 오너자문사 · (주)더원프라이빗에쿼티 대표이사</li>
-            <li>前 (주)노블엠앤비 사내이사, 코스닥 상장사 신사업 전략 및 이사회 경영</li>
-            <li>前 (주)피앤텔 사외이사, 코스닥 상장사 경영권 변동기 지배구조 재편 참여</li>
-            <li>前 (주)녹원씨엔아이 사외이사 · (주)에스에프씨 이사, 코스닥 상장사 이사회</li>
-            <li>前 (주)케이에스스포츠 전무이사, IPO 준비 및 기관 투자유치 실무 총괄</li>
-            <li>前 법무법인 사무국장, 기업 법률자문 프로세스 관리 기반</li>
+  <!-- ============ 6 · 대표 오너자문사 (편지) ============ -->
+  <section class="ch" id="founder">
+    <div class="wrap">
+      <p class="eyebrow rv">MANAGING PARTNER</p>
+      <div class="profile rv">
+        <div class="profile__mark"><img src="assets/founder-seal.jpg" alt="원경민 인장 (元庚珉印)" loading="lazy"></div>
+        <div class="profile__body">
+          <h2 class="profile__name">원경민 <small>대표 오너자문사 · Managing Partner</small></h2>
+          <p class="profile__lead">21년간 기업의 가장 중요한 결정들 곁에서 일했습니다. 코스닥 상장사의 사내이사·사외이사·전무이사로 이사회에 참여했고, 기관 투자유치와 IPO 요건 정비, 대형 거래의 계약 검토를 맡아 왔습니다. 성사된 거래와 무산된 거래, 지켜낸 회사와 무너진 회사를 그 자리에서 함께 겪었습니다.</p>
+          <p class="profile__lead">오너의 결정 곁에 서는 그 일에 이름이 없다는 것을 알고, 이 직업에 '오너자문사'라는 이름을 붙였습니다. 같은 무게를 견뎌본 사람들과 함께 오너서클을 시작합니다.</p>
+          <h3 class="profile__sub">약력</h3>
+          <ul class="career rv-stagger">
+            <li><span>現</span>오너서클 대표 오너자문사 · (주)더원프라이빗에쿼티 대표이사</li>
+            <li><span>前</span>(주)노블엠앤비 사내이사, 코스닥 상장사 신사업 전략 및 이사회 경영</li>
+            <li><span>前</span>(주)피앤텔 사외이사, 코스닥 상장사 경영권 변동기 지배구조 재편 참여</li>
+            <li><span>前</span>(주)녹원씨엔아이 사외이사 · (주)에스에프씨 이사, 코스닥 상장사 이사회</li>
+            <li><span>前</span>(주)케이에스스포츠 전무이사, IPO 준비 및 기관 투자유치 실무 총괄</li>
+            <li><span>前</span>법무법인 사무국장, 기업 법률자문 프로세스 관리 기반</li>
           </ul>
-          <p class="founder__note">오너서클에 합류하는 모든 자문사는 같은 기준을 거칩니다.</p>
+          <p class="small">오너서클에 합류하는 모든 자문사는 같은 기준을 거칩니다.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ SECTION 8 · FAQ ============ -->
-  <section class="section" id="faq">
-    <div class="container container--narrow">
-      <p class="eyebrow eyebrow--center reveal">FAQ</p>
-      <h2 class="h2 centered reveal">자주 묻는 질문</h2>
-      <div class="faq reveal">
-        <details class="faq__item" open>
-          <summary>일반 경영컨설팅과 무엇이 다릅니까?</summary>
-          <p>컨설팅은 회사와 조직을 분석하고 전략 보고서를 남깁니다. 그 자체로 의미 있는 일이지만, 보고서를 실행할지 말지 결정하는 순간에는 오너 혼자 남습니다. 오너서클은 바로 그 순간부터 시작합니다. 프로젝트가 끝나면 떠나는 것이 아니라, 결정 이전부터 매달 곁에 있습니다. 컨설턴트는 보고서를 남기고, 오너자문사는 결정을 남깁니다.</p>
+  <!-- ============ 7 · FAQ ============ -->
+  <section class="ch" id="faq">
+    <div class="wrap wrap--narrow">
+      <p class="eyebrow rv">FAQ</p>
+      <h2 class="h-l rv">자주 묻는 질문</h2>
+      <p class="talk__lead rv">대표님이 묻고, 오너자문사가 답합니다.</p>
+      <div class="talk rv-stagger">
+        <details class="talk__item" open>
+          <summary><span class="talk__who">대표님</span><span class="talk__q">지금 급한 문제가 없는데도 필요합니까.</span><span class="talk__tog" aria-hidden="true"></span></summary>
+          <div class="talk__a"><span class="talk__who talk__who--us">오너자문사</span><p>급한 문제가 없을 때가 오히려 시작하기 좋은 때입니다. 브리핑은 문제를 고치는 자리가 아니라 회사 전체를 오너의 눈으로 한 번 읽는 자리고, 멤버십은 문제가 터진 뒤가 아니라 그 전부터 곁에 있는 것입니다.</p></div>
         </details>
-        <details class="faq__item">
-          <summary>로펌과 회계법인이 이미 있습니다.</summary>
-          <p>그분들과 경쟁하지 않습니다. 오히려 함께 일합니다. 변호사와 회계사는 정확한 질문을 받았을 때 가장 정확한 답을 주는 전문가들입니다. 문제는 오너가 무엇을 물어야 할지 모르는 사안이 늘 먼저 온다는 것입니다. 오너자문사는 오너의 자리에서 그 질문을 먼저 정리하고, 어느 전문가에게 무엇을 확인해야 하는지 함께 설계합니다. 대표님의 변호사와 회계사가 더 정확하게 일하게 됩니다.</p>
+        <details class="talk__item">
+          <summary><span class="talk__who">대표님</span><span class="talk__q">우리 회사 규모에도 맞습니까.</span><span class="talk__tog" aria-hidden="true"></span></summary>
+          <div class="talk__a"><span class="talk__who talk__who--us">오너자문사</span><p>규모로 가리지 않습니다. 회사의 가장 중요한 결정을 대표가 혼자 내리고 있다면, 그 회사가 맞습니다. 상장사든 비상장사든 마찬가지입니다.</p></div>
         </details>
-        <details class="faq__item">
-          <summary>왜 사건 단위가 아닌 월 단위 계약입니까?</summary>
-          <p>오너의 위기는 예고하고 오지 않습니다. 문제가 터진 뒤에 사람을 찾으면, 회사를 설명하는 데만 몇 주가 걸립니다. 그리고 그 몇 주가 가장 비쌉니다. 월 멤버십은 대표님의 회사와 사정을 이미 알고 있는 사람이 결정적인 순간 즉시 움직이는 상태를 확보하는 것입니다. 저희가 시간이 아니라 '상태'를 판다고 말씀드리는 이유입니다.</p>
+        <details class="talk__item">
+          <summary><span class="talk__who">대표님</span><span class="talk__q">어떤 문제를 들고 가면 됩니까.</span><span class="talk__tog" aria-hidden="true"></span></summary>
+          <div class="talk__a"><span class="talk__who talk__who--us">오너자문사</span><p>정해진 문제가 없어도 됩니다. 투자 유치, 기업가치, 승계, 핵심 임원, 동업자, 대표 개인의 브랜드. 어느 것이든 좋고, 무엇이 문제인지 모르겠다는 것도 좋은 출발입니다.</p></div>
         </details>
-        <details class="faq__item">
-          <summary>제가 회사를 제일 잘 아는데, 왜 외부 시각이 필요한가요?</summary>
-          <p>맞습니다. 대표님이 업종과 회사는 가장 잘 아십니다. 다만 매일 눈앞의 문제를 막아내는 사람은 1~2년 뒤의 리스크를 보기 어렵습니다. 회사에 대한 애착이 시장의 냉정한 평가보다 앞설 때도 있고요. 오너자문사는 그 판 밖에서, 오너의 시야가 닿지 않는 지점을 짚어드립니다.</p>
+        <details class="talk__item">
+          <summary><span class="talk__who">대표님</span><span class="talk__q">이미 조언해 주는 지인들이 있습니다.</span><span class="talk__tog" aria-hidden="true"></span></summary>
+          <div class="talk__a"><span class="talk__who talk__who--us">오너자문사</span><p>좋은 지인은 큰 자산입니다. 다만 지인의 조언에는 그 사람의 사업과 시선이 섞입니다. 오너자문사의 자문에는 오직 대표님의 회사만 있습니다.</p></div>
         </details>
-        <details class="faq__item">
-          <summary>기밀과 오너 개인 정보의 보안은 어떻게 지켜집니까?</summary>
-          <p>모든 자문 계약에 기한 없는 비밀유지 조항이 포함되며, 이 의무는 계약이 종료된 후에도 사라지지 않습니다. 또한 경쟁 관계에 있는 기업은 동시에 수임하지 않는 것을 계약상 원칙으로 하며, 신규 계약 전 이해상충 여부를 먼저 확인합니다. 민감한 사안을 문서로 남기지 않는 브리핑 원칙도 같은 이유입니다.</p>
+        <details class="talk__item">
+          <summary><span class="talk__who">대표님</span><span class="talk__q">제 얘기가 밖으로 나가진 않습니까.</span><span class="talk__tog" aria-hidden="true"></span></summary>
+          <div class="talk__a"><span class="talk__who talk__who--us">오너자문사</span><p>만남은 대표님과만 갖고, 모든 계약에 기한 없는 비밀유지 조항이 들어갑니다. 경쟁 관계의 회사는 동시에 맡지 않고, 판단과 결론은 문서로 남기지 않습니다.</p></div>
         </details>
-        <details class="faq__item">
-          <summary>오너서클의 자문사는 어떻게 검증되나요?</summary>
-          <p>상장사·중견기업 임원 경력 10년 이상, 투자유치·M&A·IPO 등 실전 경험 2개 영역 이상을 기본으로 봅니다. 이력은 확인 가능한 자료로 검증하고, 표준 과정을 이수한 사람만 투입합니다.</p>
+        <details class="talk__item">
+          <summary><span class="talk__who">대표님</span><span class="talk__q">계약 기간은 어떻게 됩니까.</span><span class="talk__tog" aria-hidden="true"></span></summary>
+          <div class="talk__a"><span class="talk__who talk__who--us">오너자문사</span><p>멤버십은 3개월을 함께한 뒤부터는 달마다 이어집니다. 마치실 땐 한 달 전에만 알려주시면 됩니다. 그 이상의 약속은 받지 않습니다. 대표님이 다음 달에도 저희를 곁에 두실지는, 그달의 자문이 답해야 할 일이라고 생각합니다.</p></div>
         </details>
+      </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ SECTION 8.5 · 오너자문사 모집 ============ -->
-  <section class="section section--recruit recruit-teaser" id="recruit">
-    <div class="container container--narrow">
-      <p class="eyebrow eyebrow--center reveal">BECOME AN OWNER ADVISOR</p>
-      <h2 class="h2 centered reveal">오너서클에는 이런 사람들이 있습니다</h2>
-      <p class="prose prose--lg centered reveal">
-        새벽 이사회에서 경영권이 갈리는 표결을 지켜본 사람.<br>
-        수백억 계약서의 마지막 장을 넘기며 오너의 손이 멈추던 순간, 그 옆에 앉아 있던 사람.<br>
-        투자를 받아본 사람, 회사를 넘겨본 사람, 그리고 지키지 못한 회사의 마지막까지 함께 있어본 사람.
-      </p>
-      <p class="prose prose--lg centered reveal">
-        오너서클의 자문사는 이런 시간을 지나온 사람들입니다.<br>
-        책에서 배운 것이 아니라, 그 방 안에서 몸으로 겪은 사람들입니다.<br>
-        그래서 대표님이 말을 끝내기 전에, 무엇이 두려우신지 먼저 압니다.<br>
-        같은 무게를 짊어져 본 사람만이, 그 무게를 나눌 수 있습니다.
-      </p>
-      <p class="prose prose--lg centered reveal">혹시 당신이 이런 시간을 지나온 사람이라면, 오너서클은 지식을 전달하는 사람이 아니라, 오너의 가장 무거운 방 안까지 함께 들어갈 파트너를 찾습니다.</p>
-      <ul class="recruit-fit-list reveal">
-        <li><strong>평생 다시 꺼내지 않을 비밀을 다뤄본 분</strong>: 오너의 사적인 고민부터 기업의 명운이 걸린 전략까지, 비밀유지가 몸에 밴 사람.</li>
-        <li><strong>어떤 이해관계에도 흔들리지 않고 오너 편에 설 수 있는 분</strong>: 수많은 지분 관계와 이해관계자들 사이에서, 오너의 이익만을 기준으로 직언할 수 있는 독립적인 사람.</li>
-        <li><strong>계약이 끝난 이후의 리스크를 먼저 내다보는 분</strong>: 성사된 계약 뒤에 남는 법적·세무적·인사적 문제를 먼저 감지하고 다뤄본 사람.</li>
-      </ul>
-      <div class="recruit-teaser__actions reveal">
-        <a href="recruit.html" class="btn btn--gold">오너자문사 합류 안내</a>
+  <!-- ============ 8 · 합류 ============ -->
+  <section class="ch ch--join" id="join">
+    <div class="wrap wrap--narrow">
+      <p class="eyebrow rv">BECOME AN OWNER ADVISOR</p>
+      <h2 class="h-l rv">오너자문사는<br>이런 사람입니다</h2>
+      <div class="cols rv">
+        <p>기업 임원으로, 상장사 이사회에서, 오너의 바로 옆자리에서 회사의 가장 중요한 결정을 오너와 함께 내려본 사람. <strong>오너서클은 그 경력에 오너자문사라는 이름을 붙였습니다.</strong></p>
+        <p>합류 기준은 누구에게나 같습니다. 기업 임원 경력 10년 이상, 투자유치·M&amp;A·IPO·승계·경영권·구조조정 가운데 두 영역 이상의 실전 경험, 그리고 오너와 직접 일해 본 이력. 서류와 대면 인터뷰, 윤리 심사를 거칩니다.</p>
       </div>
-      <p class="statement statement--muted reveal">오너자문사라는 이름은, 오너의 자리에 붙는 고독을 이해한다는 증명입니다.<br>조직도에는 없지만, 오너가 믿고 기댈 수 있는 사람이 될 준비가 되셨다면, 오너서클의 여정에 합류하십시오.</p>
+      <div class="namecard pobj rv" data-light data-tilt>
+        <div class="namecard__top"><svg class="wordmark wordmark--card" role="img" aria-label="OWNERCIRCLE" viewBox="0 0 2928 379"><use href="#logo-wordmark-path"/></svg><small>OWNER ADVISORY FIRM</small></div>
+        <div class="namecard__mid"><span class="blank"></span><b>오너자문사</b><em>Owner Advisor</em></div>
+        <div class="namecard__bot"><span>오너서클 오너자문펌</span><span>ownercircle.kr</span></div>
+      </div>
+      <p class="namecard__cap rv">이 자리에 들어갈 이름을 찾고 있습니다.</p>
+      <p class="rv"><a href="recruit.html" class="lnk">오너자문사 합류 안내 <span aria-hidden="true">&rarr;</span></a></p>
     </div>
   </section>
 
-  <!-- ============ SECTION 9 · 마지막 CTA ============ -->
-  <section class="section cta-final" id="cta">
-    <div class="cta-final__ring" aria-hidden="true">
-      <svg viewBox="0 0 640 640">
-        <circle cx="320" cy="320" r="300" class="hero__ring-arc"/>
-      </svg>
-    </div>
-    <div class="container container--narrow">
-      <p class="statement statement--xl reveal">
-        대한민국의 모든 오너는<br>혼자 결정해왔습니다.<br>
-        <span class="gold-text">이제, 오너의 결정에도 전문가가 필요합니다.</span>
-      </p>
-      <form class="form form--cta reveal" id="ctaForm" novalidate>
-        <div class="form__row">
-          <label>성함<input type="text" name="name" required></label>
-          <label>회사명<input type="text" name="company" required></label>
-        </div>
-        <div class="form__row">
-          <label>연락처<input type="tel" name="phone" required></label>
-        </div>
-        <div class="form__row">
-          <label>지금 가장 무겁게 느끼시는 결정 한 가지<input type="text" name="concern" placeholder="예: 투자 유치를 앞두고 지분 구조를 어떻게 가져갈지 고민입니다."></label>
-        </div>
-        <button type="submit" class="btn btn--gold btn--block btn--lg">블랙 브리핑 신청</button>
-        <p class="form__note">남겨주신 내용은 대표 오너자문사만 확인합니다.</p>
-        <p class="form__success" role="status" hidden>접수되었습니다. 24시간 내 대표 오너자문사가 직접 연락드립니다.</p>
-        <p class="form__error" role="alert" hidden>전송에 실패했습니다. 잠시 후 다시 시도해주세요.</p>
-      </form>
+  <!-- ============ 9 · 회신 (도장) ============ -->
+  <section class="ch ch--reply" id="reply">
+    <div class="wrap">
+      <div class="paper" id="paper">
+        <div class="stamp-target" aria-hidden="true"><div class="seal-shadow" id="sealShadow"></div><img class="stamp" src="assets/seal-red.png" alt=""></div>
+        <p class="paper__statement">결정은 대표님이 하십니다.<br><strong>다만, 혼자 하실 필요는 <br class="br-d">없습니다.</strong></p>
+        <form class="reply" id="ctaForm" novalidate>
+          <div class="reply__row">
+            <label><span>성함</span><input type="text" name="name" required autocomplete="name"></label>
+            <label><span>회사명</span><input type="text" name="company" required autocomplete="organization"></label>
+          </div>
+          <label><span>연락처</span><input type="tel" name="phone" required autocomplete="tel"></label>
+          <label><span>지금 가장 무겁게 느끼시는 결정 한 가지</span><input type="text" name="concern" placeholder="예: 승계를 언제, 어떻게 시작해야 할지 고민입니다."></label>
+          <div class="reply__foot">
+            <button type="submit" class="btn">블랙 브리핑 신청</button>
+            <p class="reply__note">남겨주신 내용은 대표 오너자문사만 확인합니다.</p>
+          </div>
+          <p class="reply__success" role="status" hidden>접수되었습니다. 24시간 내 대표 오너자문사가 직접 연락드립니다.</p>
+          <p class="reply__error" role="alert" hidden>전송에 실패했습니다. 잠시 후 다시 시도해주세요.</p>
+        </form>
+      </div>
     </div>
   </section>
+
+  <footer class="colophon">
+    <svg class="wordmark" role="img" aria-label="OWNERCIRCLE" viewBox="0 0 2928 379"><use href="#logo-wordmark-path"/></svg>
+    <p>대표 원경민</p>
+    <p>© OWNER CIRCLE. All rights reserved.</p>
+    <p><em>We advise the owner, not just the company.</em></p>
+  </footer>
 
 </main>
 
-<footer class="footer">
-  <div class="container">
-    <div class="footer__brand">
-<svg class="brand-wordmark brand-wordmark--footer" role="img" aria-label="OWNERCIRCLE" viewBox="0 0 2928 379"><use href="#logo-wordmark-path"/></svg>
-    </div>
-    <p>대표 오너자문사 원경민</p>
-    <p class="footer__copyright">© OWNER CIRCLE. All rights reserved.</p>
-    <p class="footer__tagline">Korea's Owner Advisory Firm. <em>We advise the owner, not just the company.</em></p>
-  </div>
-</footer>
-
-<script src="js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/scene.js?v=202609120346"></script>
+<script src="js/cine.js?v=202609120346"></script>
 </body>
 </html>
