@@ -727,3 +727,23 @@ h1,h2,h3{ font-family:var(--serif); font-weight:400; color:var(--ink); }
 .notepad .ways__list li{ border-bottom:1px solid var(--line); padding:22px 0 20px; }
 .notepad .ways__list li:last-child{ border-bottom:0; }
 .notepad .ways__list h3 span{ color:var(--lamp); opacity:1; }
+
+/* 신청서: 어떤 폭에서도 화면을 넘지 않게 */
+.ch--reply .wrap{ max-width:100%; }
+.paper{ max-width:min(720px, 100%); width:100%; box-sizing:border-box; }
+.reply__row{ grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); }
+.reply input, .reply textarea{ width:100%; min-width:0; box-sizing:border-box; }
+.reply label{ min-width:0; }
+.reply__foot{ flex-wrap:wrap; }
+@media (max-width:900px){
+  .ch--reply .wrap{ padding:0 16px; }
+  .paper{ padding-left:clamp(20px,5vw,40px); padding-right:clamp(20px,5vw,40px); }
+  .paper__statement{ padding-right:0; }
+  .stamp-target{ width:64px; top:16px; right:16px; }
+  .reply .btn{ width:100%; }
+  .reply__note{ width:100%; text-align:center; }
+}
+
+/* 신청 버튼 가운데 */
+.reply__foot{ justify-content:center; flex-direction:column; gap:14px; }
+.reply__note{ width:100%; text-align:center; }
