@@ -56,23 +56,8 @@
   /* ---- 오프닝: 새벽 두 시 → 질문 → 제목 ---- */
   const hero = document.querySelector('.open__hero');
   const desk = document.querySelector('.desk');
-  let seen = false; try { seen = sessionStorage.getItem('oc-intro') === '1'; } catch (_) {}
-  if (seen) {
-    gsap.fromTo(hero, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' });
-    if (desk) gsap.fromTo(desk, { opacity: 0 }, { opacity: 1, duration: 1.6, ease: 'power2.out' });
-  } else {
-    const intro = gsap.timeline({ onComplete: () => { try { sessionStorage.setItem('oc-intro', '1'); } catch (_) {} } });
-    intro.fromTo('.open__line--1', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .9, ease: 'power2.out', delay: .3 })
-      .to('.open__line--1', { opacity: 0, y: -10, duration: .55, ease: 'power2.in' }, '+=.9')
-      .fromTo('.open__line--2', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .9, ease: 'power2.out' })
-      .to('.open__line--2', { opacity: 0, y: -10, duration: .55, ease: 'power2.in' }, '+=1.5')
-      .fromTo(hero, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 1.1, ease: 'power3.out' });
-    if (desk) intro.fromTo(desk, { opacity: 0 }, { opacity: 1, duration: 1.8, ease: 'power2.out' }, '<');
-    const skip = () => { if (intro.progress() < 1) intro.progress(1); };
-    window.addEventListener('wheel', skip, { once: true, passive: true });
-    window.addEventListener('touchstart', skip, { once: true, passive: true });
-    window.addEventListener('keydown', skip, { once: true });
-  }
+  gsap.fromTo(hero, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' });
+  if (desk) gsap.fromTo(desk, { opacity: 0 }, { opacity: 1, duration: 1.6, ease: 'power2.out' });
 
   /* ---- 스크롤 리빌 ---- */
   document.querySelectorAll('.rv').forEach(el => {
