@@ -71,6 +71,41 @@
   /* ---- 등불이 스크롤을 따라 천천히 흐른다 ---- */
   gsap.to('.lamp', { yPercent: 40, xPercent: -28, ease: 'none', scrollTrigger: { trigger: document.body, start: 'top top', end: 'bottom bottom', scrub: 1.2 } });
 
+  /* ---- BLACK 카드: 아주 작은 다이아몬드 플레이크가 제각각 반짝인다 ---- */
+  (() => {
+    const blk = document.querySelector('.plan--blk');
+    if (!blk) return;
+    const cv = document.createElement('canvas'); cv.className = 'plan__sparkle'; cv.setAttribute('aria-hidden', 'true'); blk.prepend(cv);
+    const ctx = cv.getContext('2d'); const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let w = 0, h = 0, pts = [];
+    const size = () => {
+      const r = blk.getBoundingClientRect(); w = r.width; h = r.height;
+      cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); cv.style.width = w + 'px'; cv.style.height = h + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      pts = Array.from({ length: Math.round(w * h / 2000) }, () => ({
+        x: Math.random() * w, y: Math.random() * h, r: .35 + Math.random() * 1.1,
+        ph: Math.random() * Math.PI * 2, sp: .5 + Math.random() * 1.8, star: Math.random() < .14,
+        c: Math.random() < .55 ? '255,244,222' : (Math.random() < .5 ? '214,226,255' : '255,214,236')
+      }));
+    };
+    size(); if ('ResizeObserver' in window) new ResizeObserver(size).observe(blk);
+    let on = true; if ('IntersectionObserver' in window) new IntersectionObserver(e => { on = e[0].isIntersecting; }).observe(blk);
+    const draw = (t) => {
+      requestAnimationFrame(draw); if (!on) return;
+      ctx.clearRect(0, 0, w, h); const s = t / 1000;
+      for (const p of pts) {
+        const a = Math.max(0, Math.sin(p.ph + s * p.sp)); const al = a * a * a; if (al < .03) continue;
+        ctx.fillStyle = 'rgba(' + p.c + ',' + (al * .95).toFixed(3) + ')';
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
+        if (p.star && al > .55) {
+          const L = p.r * 7 * al; ctx.strokeStyle = 'rgba(' + p.c + ',' + (al * .45).toFixed(3) + ')'; ctx.lineWidth = .6;
+          ctx.beginPath(); ctx.moveTo(p.x - L, p.y); ctx.lineTo(p.x + L, p.y); ctx.moveTo(p.x, p.y - L); ctx.lineTo(p.x, p.y + L); ctx.stroke();
+        }
+      }
+    };
+    requestAnimationFrame(draw);
+  })();
+
   /* ---- 종이 표면의 등불 반사: 커서를 따라 하이라이트가 움직인다 ---- */
   if (matchMedia('(hover:hover) and (pointer:fine)').matches) {
     document.querySelectorAll('[data-light]').forEach(el => {

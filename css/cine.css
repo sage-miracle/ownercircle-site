@@ -747,3 +747,16 @@ h1,h2,h3{ font-family:var(--serif); font-weight:400; color:var(--ink); }
 /* 신청 버튼 가운데 */
 .reply__foot{ justify-content:center; flex-direction:column; gap:14px; }
 .reply__note{ width:100%; text-align:center; }
+
+/* BLACK 카드 반짝임 층 */
+.plan__sparkle{ position:absolute; inset:0; border-radius:inherit; pointer-events:none; z-index:0; mix-blend-mode:screen; }
+.plan--blk > *:not(.plan__sparkle){ position:relative; z-index:1; }
+@media (prefers-reduced-motion: reduce){ .plan__sparkle{ display:none; } }
+
+/* 대표 소개: 인장을 이름 옆에 */
+.profile{ display:block; }
+.profile__head{ display:flex; align-items:center; gap:22px; margin-bottom:26px; }
+.profile__mark{ width:96px; flex:none; }
+.profile__name{ margin:0; }
+.profile__lead{ max-width:760px; }
+@media (max-width:760px){ .profile__head{ gap:16px; } .profile__mark{ width:76px; } .profile__name{ font-size:26px; } }
