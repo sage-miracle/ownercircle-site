@@ -28,13 +28,14 @@
       const ok = form.querySelector('.reply__success'), err = form.querySelector('.reply__error');
       const fields = form.querySelectorAll('input, textarea, button');
       const payload = build(new FormData(form));
-      err.hidden = true; fields.forEach(el => el.disabled = true);
+      const btn = form.querySelector('button[type="submit"]'), btnText = btn ? btn.textContent : '';
+      err.hidden = true; form.setAttribute('aria-busy', 'true'); fields.forEach(el => el.disabled = true); if (btn) btn.textContent = '전송 중';
       try {
         const res = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
         const result = await res.json().catch(() => ({ ok: false }));
         if (!res.ok || !result.ok) throw new Error(result.message || 'submit failed');
-        ok.hidden = false;
-      } catch (_) { fields.forEach(el => el.disabled = false); err.hidden = false; }
+        ok.hidden = false; if (btn) btn.textContent = btnText; form.removeAttribute('aria-busy');
+      } catch (_) { fields.forEach(el => el.disabled = false); if (btn) btn.textContent = btnText; form.removeAttribute('aria-busy'); err.hidden = false; }
     });
   };
   wireForm(document.getElementById('ctaForm'), '/api/submit', d => ({
