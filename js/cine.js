@@ -71,6 +71,53 @@
   /* ---- 등불이 스크롤을 따라 천천히 흐른다 ---- */
   gsap.to('.lamp', { yPercent: 40, xPercent: -28, ease: 'none', scrollTrigger: { trigger: document.body, start: 'top top', end: 'bottom bottom', scrub: 1.2 } });
 
+  /* ---- 히어로: 밤의 사무실 창. 초점 나간 도시 불빛이 흐르고, 등불 빛 속에 먼지가 떠다닌다 ---- */
+  (() => {
+    const cv = document.getElementById('bokeh'); if (!cv || reduce) return;
+    const ctx = cv.getContext('2d'); const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    let w = 0, h = 0, lights = [], motes = [];
+    const R = (a, b) => a + Math.random() * (b - a);
+    const size = () => {
+      const r = cv.parentElement.getBoundingClientRect(); w = r.width; h = r.height;
+      cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); cv.style.width = w + 'px'; cv.style.height = h + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const n = w < 700 ? 12 : 20;
+      lights = Array.from({ length: n }, (_, i) => ({
+        x: R(w * .45, w * 1.05), y: R(h * .05, h * .95), r: R(w < 700 ? 18 : 26, w < 700 ? 54 : 96),
+        warm: Math.random() < .72, a: R(.05, .16), ph: R(0, 6.28), sp: R(.08, .22), dx: R(-.04, .04), dy: R(-.03, .03)
+      }));
+      motes = Array.from({ length: w < 700 ? 40 : 90 }, () => ({ x: R(0, w), y: R(0, h), r: R(.5, 1.6), a: R(.15, .5), vy: R(-.06, -.02), vx: R(-.03, .03), ph: R(0, 6.28) }));
+    };
+    size(); if ('ResizeObserver' in window) new ResizeObserver(size).observe(cv.parentElement);
+    let on = true; if ('IntersectionObserver' in window) new IntersectionObserver(e => { on = e[0].isIntersecting; }).observe(cv);
+    let last = performance.now();
+    const draw = (now) => {
+      requestAnimationFrame(draw); if (!on) return;
+      const dt = Math.min(50, now - last); last = now; const s = now / 1000;
+      ctx.clearRect(0, 0, w, h);
+      ctx.globalCompositeOperation = 'lighter';
+      for (const L of lights) {
+        L.x += L.dx * dt * .06; L.y += L.dy * dt * .06;
+        if (L.x < w * .3) L.dx = Math.abs(L.dx); if (L.x > w * 1.1) L.dx = -Math.abs(L.dx);
+        if (L.y < -L.r) L.dy = Math.abs(L.dy); if (L.y > h + L.r) L.dy = -Math.abs(L.dy);
+        const a = L.a * (.75 + .25 * Math.sin(L.ph + s * L.sp));
+        const g = ctx.createRadialGradient(L.x, L.y, 0, L.x, L.y, L.r);
+        const c = L.warm ? '255,196,120' : '150,178,255';
+        g.addColorStop(0, 'rgba(' + c + ',' + (a * 1.15).toFixed(3) + ')');
+        g.addColorStop(.72, 'rgba(' + c + ',' + (a * .85).toFixed(3) + ')');
+        g.addColorStop(1, 'rgba(' + c + ',0)');
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(L.x, L.y, L.r, 0, Math.PI * 2); ctx.fill();
+      }
+      for (const m of motes) {
+        m.x += m.vx * dt; m.y += m.vy * dt; if (m.y < -4) { m.y = h + 4; m.x = R(0, w); } if (m.x < -4) m.x = w + 4; if (m.x > w + 4) m.x = -4;
+        const a = m.a * (.5 + .5 * Math.sin(m.ph + s * .9));
+        ctx.fillStyle = 'rgba(255,232,196,' + a.toFixed(3) + ')'; ctx.beginPath(); ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.globalCompositeOperation = 'source-over';
+    };
+    requestAnimationFrame(draw);
+  })();
+
   /* ---- BLACK 카드: 아주 작은 다이아몬드 플레이크가 제각각 반짝인다 ---- */
   (() => {
     const blk = document.querySelector('.plan--blk');
