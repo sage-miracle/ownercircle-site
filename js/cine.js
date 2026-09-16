@@ -82,10 +82,11 @@
       const r = cv.parentElement.getBoundingClientRect(); w = r.width; h = r.height;
       cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); cv.style.width = w + 'px'; cv.style.height = h + 'px';
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const n = w < 700 ? 12 : 20;
+      const n = w < 700 ? 16 : 26, m = w < 700;
+      /* 창밖 도시의 불빛: 작고 또렷한 원반, 대부분 따뜻한 빛, 드물게 차가운 흰빛 */
       lights = Array.from({ length: n }, (_, i) => ({
-        x: R(w * .45, w * 1.05), y: R(h * .05, h * .95), r: R(w < 700 ? 18 : 26, w < 700 ? 54 : 96),
-        warm: Math.random() < .72, a: R(.05, .16), ph: R(0, 6.28), sp: R(.08, .22), dx: R(-.04, .04), dy: R(-.03, .03)
+        x: R(w * .4, w * 1.04), y: R(h * .04, h * .92), r: R(m ? 8 : 12, m ? 34 : 62),
+        tone: Math.random() < .6 ? 0 : (Math.random() < .8 ? 1 : 2), a: R(.07, .2), ph: R(0, 6.28), sp: R(.08, .22), dx: R(-.04, .04), dy: R(-.03, .03)
       }));
       motes = Array.from({ length: w < 700 ? 40 : 90 }, () => ({ x: R(0, w), y: R(0, h), r: R(.5, 1.6), a: R(.15, .5), vy: R(-.06, -.02), vx: R(-.03, .03), ph: R(0, 6.28) }));
     };
@@ -103,9 +104,10 @@
         if (L.y < -L.r) L.dy = Math.abs(L.dy); if (L.y > h + L.r) L.dy = -Math.abs(L.dy);
         const a = L.a * (.75 + .25 * Math.sin(L.ph + s * L.sp));
         const g = ctx.createRadialGradient(L.x, L.y, 0, L.x, L.y, L.r);
-        const c = L.warm ? '255,196,120' : '150,178,255';
-        g.addColorStop(0, 'rgba(' + c + ',' + (a * 1.15).toFixed(3) + ')');
-        g.addColorStop(.72, 'rgba(' + c + ',' + (a * .85).toFixed(3) + ')');
+        const c = L.tone === 0 ? '255,190,110' : (L.tone === 1 ? '255,232,196' : '222,224,232');
+        g.addColorStop(0, 'rgba(' + c + ',' + (a * .95).toFixed(3) + ')');
+        g.addColorStop(.8, 'rgba(' + c + ',' + (a * .9).toFixed(3) + ')');
+        g.addColorStop(.94, 'rgba(' + c + ',' + (a * 1.1).toFixed(3) + ')');
         g.addColorStop(1, 'rgba(' + c + ',0)');
         ctx.fillStyle = g; ctx.beginPath(); ctx.arc(L.x, L.y, L.r, 0, Math.PI * 2); ctx.fill();
       }
@@ -119,7 +121,7 @@
     requestAnimationFrame(draw);
   })();
 
-  /* ---- BLACK 카드: 아주 작은 다이아몬드 플레이크가 제각각 반짝인다 ---- */
+  /* ---- BLACK 카드: 펄 도장의 미세한 플레이크. 빛이 스치듯 은은하게 일렁인다 ---- */
   (() => {
     const blk = document.querySelector('.plan--blk');
     if (!blk) return;
@@ -130,10 +132,10 @@
       const r = blk.getBoundingClientRect(); w = r.width; h = r.height;
       cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); cv.style.width = w + 'px'; cv.style.height = h + 'px';
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      pts = Array.from({ length: Math.round(w * h / 2000) }, () => ({
-        x: Math.random() * w, y: Math.random() * h, r: .35 + Math.random() * 1.1,
-        ph: Math.random() * Math.PI * 2, sp: .5 + Math.random() * 1.8, star: Math.random() < .14,
-        c: Math.random() < .55 ? '255,244,222' : (Math.random() < .5 ? '214,226,255' : '255,214,236')
+      pts = Array.from({ length: Math.round(w * h / 900) }, () => ({
+        x: Math.random() * w, y: Math.random() * h, r: .3 + Math.random() * .7,
+        ph: Math.random() * Math.PI * 2, sp: .25 + Math.random() * .6,
+        c: Math.random() < .45 ? '255,244,222' : (Math.random() < .5 ? '206,222,255' : '255,210,236')
       }));
     };
     size(); if ('ResizeObserver' in window) new ResizeObserver(size).observe(blk);
@@ -141,14 +143,15 @@
     const draw = (t) => {
       requestAnimationFrame(draw); if (!on) return;
       ctx.clearRect(0, 0, w, h); const s = t / 1000;
+      /* 광택 띠가 카드를 천천히 가로지르고, 띠 근처의 플레이크만 살짝 밝아진다 */
+      const band = ((s * .09) % 1.6) - .3;
       for (const p of pts) {
-        const a = Math.max(0, Math.sin(p.ph + s * p.sp)); const al = a * a * a; if (al < .03) continue;
-        ctx.fillStyle = 'rgba(' + p.c + ',' + (al * .95).toFixed(3) + ')';
+        const d = Math.abs((p.x / w) * .7 + (p.y / h) * .3 - band);
+        const sheen = Math.max(0, 1 - d / .28);
+        const tw = .5 + .5 * Math.sin(p.ph + s * p.sp);
+        const al = .06 + tw * .16 + sheen * sheen * .34; 
+        ctx.fillStyle = 'rgba(' + p.c + ',' + al.toFixed(3) + ')';
         ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
-        if (p.star && al > .55) {
-          const L = p.r * 7 * al; ctx.strokeStyle = 'rgba(' + p.c + ',' + (al * .45).toFixed(3) + ')'; ctx.lineWidth = .6;
-          ctx.beginPath(); ctx.moveTo(p.x - L, p.y); ctx.lineTo(p.x + L, p.y); ctx.moveTo(p.x, p.y - L); ctx.lineTo(p.x, p.y + L); ctx.stroke();
-        }
       }
     };
     requestAnimationFrame(draw);
