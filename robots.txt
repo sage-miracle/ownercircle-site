@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://ownercircle.kr/sitemap.xml
+
+#DaumWebMasterTool:2d6815658af0c675c28d298ce8894923b2676f2016167382b9a72bfb49259e33:8NlEA5zh8WXgoRgf+MLlog==
