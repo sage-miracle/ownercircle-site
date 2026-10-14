@@ -197,6 +197,7 @@
           if (i === cur) return; cur = i;
           items.forEach((li, j) => li.classList.toggle('is-active', j === i));
           num.textContent = String(i + 1).padStart(2, '0');
+          document.querySelectorAll('.ways__photos img').forEach((im, j) => im.classList.toggle('is-on', j === i));
           light(i); setTimeout(() => light(i), 650);
         };
         setActive(0);

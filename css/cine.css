@@ -804,3 +804,37 @@ html{ scrollbar-width:thin; scrollbar-color:#3a342e var(--bg); }
 }
 /* 밤 연출(등불)은 쓰지 않는다 */
 .lamp{ display:none; }
+
+/* ---------- 섹션 사진(2026-10-15): 평면 + 1px 헤어라인, 낮의 밝은 장면 ---------- */
+.shot{ margin:48px 0 0; border:1px solid rgba(240,232,214,.14); overflow:hidden; aspect-ratio:16/9; background:#14120f; }
+.shot img{ display:block; width:100%; height:100%; object-fit:cover; }
+#briefing .shot{ margin:36px 0 40px; }
+@media (max-width:900px){ .shot{ aspect-ratio:4/3; margin-top:32px; } }
+
+/* ---------- 동행 방식 사진(2026-10-15): PC 는 왼쪽 숫자 아래 한 장씩 바뀜, 휴대폰은 항목마다 ---------- */
+.ways__photos{ position:relative; margin-top:28px; width:min(100%,380px); aspect-ratio:4/5; border:1px solid rgba(240,232,214,.14); overflow:hidden; background:#14120f; }
+.ways__photos img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.04); transition:opacity .7s var(--ease), transform 1.2s var(--ease); }
+.ways__photos img.is-on{ opacity:1; transform:scale(1); }
+.ways__thumb{ display:none; }
+@media (max-width:900px){
+  .ways__photos{ display:none; }
+  .ways__thumb{ display:block; width:100%; aspect-ratio:16/10; object-fit:cover; margin:14px 0 4px; border-radius:2px; }
+}
+
+/* ---------- 카드 재질(2026-10-15): 미드저니로 만든 실물 재질 사진 ---------- */
+/* 고민 카드: 가죽 */
+.plate{ background:linear-gradient(160deg, rgba(20,14,10,.28), rgba(8,6,5,.55)), url(../assets/tex-leather.jpg) center/cover; box-shadow:0 40px 70px -32px rgba(0,0,0,.95), 0 0 0 1px rgba(240,215,170,.16), inset 0 0 0 7px rgba(0,0,0,0), inset 0 0 0 8px rgba(240,215,170,.10); }
+.plate::before{ display:none; }
+/* 종이 카드: 린넨 면지 */
+.sheet, .sheet--us, .plan--lite, .brief{ background:linear-gradient(165deg, rgba(255,252,245,.35), rgba(232,224,208,.25)), url(../assets/tex-linen.jpg) center/cover; }
+@media (min-width:901px){ .notepad{ background:repeating-linear-gradient(180deg, transparent 0 33px, rgba(60,50,40,.08) 33px 34px), linear-gradient(165deg, rgba(255,252,245,.35), rgba(232,224,208,.25)), url(../assets/tex-linen.jpg) center/cover; } }
+/* STANDARD: 샴페인 골드 금속 */
+.plan--std{ background:linear-gradient(165deg, rgba(255,240,205,.18), rgba(120,90,40,.12)), url(../assets/tex-gold.jpg) center/cover; }
+/* BLACK 과 블랙 브리핑: 금맥 검은 대리석 */
+.plan--blk{ background:linear-gradient(165deg, rgba(0,0,0,.25), rgba(0,0,0,.5)), url(../assets/tex-marble.jpg) center/cover; }
+.bb{ background:linear-gradient(165deg, rgba(0,0,0,.35), rgba(0,0,0,.6)), url(../assets/tex-marble.jpg) center/cover !important; }
+
+/* ---------- 마지막 서식: 금박 엠보싱(2026-10-15 대표님 선택) ---------- */
+.stamp{ mix-blend-mode:normal; filter:drop-shadow(0 2px 2px rgba(60,40,10,.35)) drop-shadow(0 0 1px rgba(60,40,10,.4)); }
+.paper.is-stamped .stamp{ opacity:1; }
+.paper__statement strong{ color:#8a6526; }

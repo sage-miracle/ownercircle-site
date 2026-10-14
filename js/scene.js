@@ -52,17 +52,21 @@
     const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(2, 4); return t;
   })();
 
-  const faceTex = new THREE.TextureLoader().load('assets/face-inked.jpg', t => { t.encoding = THREE.sRGBEncoding; t.anisotropy = 4; });
-  const stone = new THREE.MeshPhysicalMaterial({
-    color: 0x141110, roughness: 0.34, metalness: 0.12, clearcoat: 0.8, clearcoatRoughness: 0.2,
-    envMapIntensity: 0.9, bumpMap: bump, bumpScale: 0.012
+  /* 2026-10-15 대표님 결정: 돌 인장과 붉은 인주 대신 황동 엠보서와 금박 자국 */
+  const faceTex = new THREE.TextureLoader().load('assets/seal-gold.webp', t => { t.encoding = THREE.sRGBEncoding; t.anisotropy = 4; });
+  const brass = new THREE.MeshPhysicalMaterial({
+    color: 0xb48a4a, roughness: 0.26, metalness: 1.0, clearcoat: 0.6, clearcoatRoughness: 0.18,
+    envMapIntensity: 1.25, bumpMap: bump, bumpScale: 0.004
   });
-  const face = new THREE.MeshStandardMaterial({ map: faceTex, roughness: 0.62, metalness: 0.12, envMapIntensity: 0.4, bumpMap: bump, bumpScale: 0.006 });
+  const face = new THREE.MeshStandardMaterial({ map: faceTex, roughness: 0.35, metalness: 0.9, envMapIntensity: 1.1 });
   const W = 1.5, H = 3.0;
-  // BoxGeometry 재질 순서: +x, -x, +y, -y, +z, -z  → 바닥(-y)이 새긴 면
-  const seal = new THREE.Mesh(new THREE.BoxGeometry(W, H, W), [stone, stone, stone, face, stone, stone]);
-  const cap = new THREE.Mesh(new THREE.BoxGeometry(W * 0.86, 0.16, W * 0.86), new THREE.MeshPhysicalMaterial({ color: 0x241f1b, roughness: 0.28, clearcoat: 0.9, envMapIntensity: 1 }));
-  cap.position.y = H / 2 + 0.08; seal.add(cap);
+  // CylinderGeometry 재질 순서: 옆면, 윗면, 바닥 → 바닥이 금박 문양 면
+  const seal = new THREE.Mesh(new THREE.CylinderGeometry(W * 0.5, W * 0.56, H * 0.42, 64), [brass, brass, face]);
+  seal.position.y = -H * 0.29;
+  const neck = new THREE.Mesh(new THREE.CylinderGeometry(W * 0.16, W * 0.22, H * 0.42, 48), brass);
+  neck.position.y = H * 0.12; seal.add(neck);
+  const cap = new THREE.Mesh(new THREE.SphereGeometry(W * 0.3, 48, 32), new THREE.MeshPhysicalMaterial({ color: 0x1a1512, roughness: 0.22, clearcoat: 1, envMapIntensity: 1 }));
+  cap.position.y = H * 0.42; seal.add(cap);
   const group = new THREE.Group(); group.add(seal); scene.add(group);
 
   /* 평소 위치는 화면 위 바깥. mix 가 1로 가면 종이의 도장 자리로 내려온다 */
