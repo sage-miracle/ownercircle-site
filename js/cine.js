@@ -54,7 +54,7 @@
   };
   if (!hasGsap || reduce) { showAll(); return; }
 
-  /* ---- 오프닝: 새벽 두 시 → 질문 → 제목 ---- */
+  /* ---- 오프닝: 질문 → 제목 ---- */
   const hero = document.querySelector('.open__hero');
   const desk = document.querySelector('.desk');
   gsap.fromTo(hero, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' });

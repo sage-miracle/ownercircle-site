@@ -1,6 +1,6 @@
 /* =========================================================
    OWNERCIRCLE , "결정의 방"
-   새벽 두 시. 등불 하나, 계약서, 도장.
+   결정이 다음 단계로 이어지는 자리. 계약서, 편지지, 신청서.
    ========================================================= */
 :root{
   --bg:#0b0a09; --bg-2:#131110;
@@ -119,7 +119,7 @@ h1,h2,h3{ font-family:var(--serif); font-weight:400; color:var(--ink); }
 }
 .js .open__hero, .js .desk{ opacity:0; }
 
-/* 새벽 두 시의 책상: 등불 아래 계약서. 빛이 커서를 따라가며 조항을 드러낸다 */
+/* 히어로 계약서: 빛이 커서를 따라가며 조항을 드러낸다 */
 .desk{ position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
 .contract{
   position:absolute; right:-7vw; top:53%; width:min(42vw,540px); aspect-ratio:1/1.36;
