@@ -792,3 +792,15 @@ html{ scrollbar-width:thin; scrollbar-color:#3a342e var(--bg); }
 .h-l{ margin-top:0; }
 @media (max-width:600px){ .h-xl--long br{ display:none; } }
 @media (max-width:899px){ .sheet dt{ font-size:11px; } .stamp-mark{ font-size:10.5px; } }
+
+/* ---------- 히어로 사진(2026-10-15 대표님 시안 A): 낮의 도심 집무실, 서명된 계약서 ---------- */
+.desk--day{ background:url(../assets/hero-day-d.jpg) 70% 40%/cover no-repeat; }
+.desk--day::after{ content:''; position:absolute; inset:0;
+  background:linear-gradient(90deg, rgba(10,9,8,.86) 0%, rgba(10,9,8,.62) 38%, rgba(10,9,8,.18) 70%, rgba(10,9,8,.05) 100%),
+             linear-gradient(180deg, rgba(10,9,8,0) 60%, rgba(10,9,8,.85) 100%); }
+@media (max-width:900px){
+  .desk--day{ background-image:url(../assets/hero-day-m.jpg); background-position:center 25%; }
+  .desk--day::after{ background:linear-gradient(180deg, rgba(10,9,8,.05) 0%, rgba(10,9,8,.25) 30%, rgba(10,9,8,.78) 55%, rgba(10,9,8,.92) 100%); }
+}
+/* 밤 연출(등불)은 쓰지 않는다 */
+.lamp{ display:none; }
