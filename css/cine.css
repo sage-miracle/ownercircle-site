@@ -812,7 +812,7 @@ html{ scrollbar-width:thin; scrollbar-color:#3a342e var(--bg); }
 @media (max-width:900px){ .shot{ aspect-ratio:4/3; margin-top:32px; } }
 
 /* ---------- 동행 방식 사진(2026-10-15): PC 는 왼쪽 숫자 아래 한 장씩 바뀜, 휴대폰은 항목마다 ---------- */
-.ways__photos{ position:relative; margin-top:28px; width:min(100%,380px); aspect-ratio:4/5; border:1px solid rgba(240,232,214,.14); overflow:hidden; background:#14120f; }
+.ways__photos{ position:relative; margin-top:22px; width:min(100%,300px); aspect-ratio:4/5; border:1px solid rgba(240,232,214,.14); overflow:hidden; background:#14120f; }
 .ways__photos img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.04); transition:opacity .7s var(--ease), transform 1.2s var(--ease); }
 .ways__photos img.is-on{ opacity:1; transform:scale(1); }
 .ways__thumb{ display:none; }
@@ -827,7 +827,6 @@ html{ scrollbar-width:thin; scrollbar-color:#3a342e var(--bg); }
 .plate::before{ display:none; }
 /* 종이 카드: 린넨 면지 */
 .sheet, .sheet--us, .plan--lite, .brief{ background:linear-gradient(165deg, rgba(255,252,245,.35), rgba(232,224,208,.25)), url(../assets/tex-linen.jpg) center/cover; }
-@media (min-width:901px){ .notepad{ background:repeating-linear-gradient(180deg, transparent 0 33px, rgba(60,50,40,.08) 33px 34px), linear-gradient(165deg, rgba(255,252,245,.35), rgba(232,224,208,.25)), url(../assets/tex-linen.jpg) center/cover; } }
 /* STANDARD: 샴페인 골드 금속 */
 .plan--std{ background:linear-gradient(165deg, rgba(255,240,205,.18), rgba(120,90,40,.12)), url(../assets/tex-gold.jpg) center/cover; }
 /* BLACK 과 블랙 브리핑: 금맥 검은 대리석 */
