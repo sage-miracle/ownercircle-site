@@ -838,3 +838,10 @@ html{ scrollbar-width:thin; scrollbar-color:#3a342e var(--bg); }
 .stamp{ mix-blend-mode:normal; filter:drop-shadow(0 2px 2px rgba(60,40,10,.35)) drop-shadow(0 0 1px rgba(60,40,10,.4)); }
 .paper.is-stamped .stamp{ opacity:1; }
 .paper__statement strong{ color:#8a6526; }
+
+/* 오너자문 비교 카드 3장 삭제(2026-10-15 대표님) 뒤 남는 빈 공간 정리 */
+#advisory .pin > .wrap:first-child{ margin-bottom:0; }
+#advisory .pin{ padding-bottom:0; }
+#ways .pin{ padding-top:clamp(64px,8vw,104px); }
+@media (max-width:900px){ #ways .pin{ padding-top:64px; } }
+#advisory{ padding-bottom:24px; }
