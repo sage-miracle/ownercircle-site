@@ -845,3 +845,15 @@ html{ scrollbar-width:thin; scrollbar-color:#3a342e var(--bg); }
 #ways .pin{ padding-top:clamp(64px,8vw,104px); }
 @media (max-width:900px){ #ways .pin{ padding-top:64px; } }
 #advisory{ padding-bottom:24px; }
+
+/* ---------- 명함·신청서 실사(2026-10-15 대표님): 미드저니 사진 + 합성 ---------- */
+.namecard-photo{ margin:48px auto 0; max-width:620px; border:1px solid rgba(240,232,214,.12); overflow:hidden; }
+.namecard-photo img{ display:block; width:100%; height:auto; }
+/* 신청서: 월넛 책상 사진 위에 면지 한 장 */
+.ch--reply{ background:linear-gradient(180deg, rgba(10,9,8,.55), rgba(10,9,8,.15) 25%, rgba(10,9,8,.15) 75%, rgba(10,9,8,.55)), url(../assets/reply-desk-d.jpg) center/cover no-repeat; }
+.paper{ background:linear-gradient(170deg, rgba(255,253,247,.55), rgba(236,229,214,.35)), url(../assets/tex-linen.jpg) center/cover; border-radius:2px;
+  box-shadow:0 2px 3px rgba(0,0,0,.35), 0 18px 28px -10px rgba(0,0,0,.55), 0 60px 90px -40px rgba(0,0,0,.7); transform:rotate(-.6deg); }
+@media (max-width:900px){
+  .ch--reply{ background-image:linear-gradient(180deg, rgba(10,9,8,.5), rgba(10,9,8,.1) 25%, rgba(10,9,8,.1) 75%, rgba(10,9,8,.5)), url(../assets/reply-desk-m.jpg); }
+  .paper{ transform:none; }
+}
