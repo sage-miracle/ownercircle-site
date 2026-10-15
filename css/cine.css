@@ -857,12 +857,8 @@ html{ scrollbar-width:thin; scrollbar-color:#3a342e var(--bg); }
   .paper{ transform:none; }
 }
 
-/* ---------- 멤버십 카드 실물 사진(2026-10-16 대표님 "실사 느낌 더"): 배경을 지운 카드 사진을 카드 자체로 ---------- */
-.plan--lite, .plan--std, .plan--blk{ box-shadow:none !important; background-color:transparent !important; background-repeat:no-repeat !important; background-size:100% 100% !important; filter:drop-shadow(0 2px 2px rgba(0,0,0,.45)) drop-shadow(0 26px 30px rgba(0,0,0,.55)); }
-.plan--lite{ background-image:url(../assets/card-lite.webp) !important; border-radius:0; padding:44px 38px; }
-.plan--std{ background-image:url(../assets/card-std.webp) !important; border-radius:18px; }
-.plan--blk{ background-image:url(../assets/card-blk.webp) !important; border-radius:16px; }
-.plan--lite::after{ display:none; }
+/* ---------- 멤버십 카드(2026-10-16 대표님 "아까 것이 좋다, 라이트만 결만 맞춰줘"): 재질 카드 유지, LITE 만 실제 면지 결 ---------- */
+.plan--lite{ background:linear-gradient(165deg, rgba(255,252,245,.12), rgba(214,204,184,.18)), url(../assets/tex-cotton.jpg) center/cover !important; }
 
 /* ---------- 신청서: 실제 면지 한 장 + 인쇄된 글씨(잉크가 종이에 스민 느낌) ---------- */
 .paper{ background:url(../assets/paper-sheet.webp) center/100% 100% no-repeat !important; box-shadow:none !important; border-radius:0;
