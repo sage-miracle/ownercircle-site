@@ -903,3 +903,6 @@ html{ scrollbar-width:thin; scrollbar-color:#3a342e var(--bg); }
 .paper__head .wordmark{ color:#241d15; fill:#241d15; opacity:.9; }
 .paper__head .wordmark *{ fill:#241d15; }
 @media (max-width:900px){ .paper__head{ padding-right:84px; } .paper__head span{ letter-spacing:.18em; } }
+/* 도장 연출 삭제(2026-10-16 대표님 "도장 찍히는 거 빼 버려"): 도장 자리로 비워 두던 여백도 없앤다 */
+.paper__statement{ padding-right:0 !important; }
+@media (max-width:900px){ .paper{ padding-top:clamp(40px,8vw,56px) !important; } .paper__head{ padding-right:0; } }
